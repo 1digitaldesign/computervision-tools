@@ -306,7 +306,8 @@ def negative_controls(out_dir: Path) -> list[dict]:
     return controls
 
 
-def verify_all(out_dir: Path) -> dict:
+def verify_all(out_dir: Path, raw_dir: Path = Path("data/raw"),
+               crosswalk_path: Path = Path("data/latam_imaging_crosswalk.json")) -> dict:
     checks = m1_integrity(out_dir) + m2_physics(out_dir) + m3_topology(out_dir)
     controls = negative_controls(out_dir)
     if (out_dir / "access-metadata.json").exists():
@@ -316,7 +317,7 @@ def verify_all(out_dir: Path) -> dict:
         controls += extra["negative_controls"]
     if (out_dir / "latam-history-metadata.json").exists():
         from .verify_latam import verify_latam_all
-        ex2 = verify_latam_all(out_dir, Path("data/raw"))
+        ex2 = verify_latam_all(out_dir, raw_dir, crosswalk_path)
         checks += ex2["checks"]
         controls += ex2["negative_controls"]
     passed = all(c["passed"] for c in checks)

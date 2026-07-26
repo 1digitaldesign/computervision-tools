@@ -131,6 +131,10 @@ def cmd_latam(args) -> int:
     from .xbom import build_xbom, write_xbom
 
     raw, out = Path(args.raw), Path(args.out)
+    bm_path = out / "build-metadata.json"
+    if not bm_path.exists():
+        print(f"ERROR: {bm_path} not found — run `satgis build` first.")
+        return 2
     h = build_history(raw, Path(args.crosswalk))
     df = pd.DataFrame(h["rows"])
     df.to_parquet(out / "latam_imaging_history.parquet", index=False)
@@ -138,8 +142,9 @@ def cmd_latam(args) -> int:
     gpkg = out / "satgis_orbital_catalog.gpkg"
     if gpkg.exists():
         sats = gpd.read_file(gpkg, layer="satellites")
-        cur = sats.merge(df.drop(columns=["object_name"]), on="norad_cat_id", how="inner")
-        stamp = json.loads((out / "build-metadata.json").read_text())["propagation_epoch_utc"]
+        dupes = [c for c in df.columns if c in sats.columns and c != "norad_cat_id"]
+        cur = sats.merge(df.drop(columns=dupes), on="norad_cat_id", how="inner")
+        stamp = json.loads(bm_path.read_text())["propagation_epoch_utc"]
         stamp = stamp.replace("+00:00", "").rstrip("Z") + ".000Z"
         os.environ["OGR_CURRENT_DATE"] = stamp
         try:
@@ -155,7 +160,7 @@ def cmd_latam(args) -> int:
         json.dumps({"schema": h["schema"], "summary": h["summary"]},
                    indent=2, sort_keys=True, default=str) + "\n")
     man = rehash(out)
-    bm = json.loads((out / "build-metadata.json").read_text())
+    bm = json.loads(bm_path.read_text())
     am = json.loads((raw / "acquisition-manifest.json").read_text())
     write_xbom(build_xbom(am, man, bm), out / "xbom.cdx.json")
     s = h["summary"]
@@ -169,7 +174,7 @@ def cmd_latam(args) -> int:
 def cmd_verify(args) -> int:
     from .verify import verify_all
     out = Path(args.out)
-    report = verify_all(out)
+    report = verify_all(out, Path(args.raw), Path(args.crosswalk))
     for c in report["checks"] + report["negative_controls"]:
         print(f"  [{'PASS' if c['passed'] else 'FAIL'}] {c['method']:11s} "
               f"{c['check']:42s} {c['detail']}")
@@ -240,7 +245,9 @@ def main(argv: list[str] | None = None) -> int:
     lt.add_argument("--crosswalk", default="data/latam_imaging_crosswalk.json")
     lt.set_defaults(func=cmd_latam)
 
-    common(sub.add_parser("verify")).set_defaults(func=cmd_verify)
+    v = common(sub.add_parser("verify"))
+    v.add_argument("--crosswalk", default="data/latam_imaging_crosswalk.json")
+    v.set_defaults(func=cmd_verify)
     pk = common(sub.add_parser("package"))
     pk.add_argument("--dist", default="dist")
     pk.set_defaults(func=cmd_package)

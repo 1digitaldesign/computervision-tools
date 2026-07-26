@@ -16,13 +16,13 @@ import pandas as pd
 from .verify import _result
 
 
-def m1_history_integrity(out_dir: Path) -> list[dict]:
+def m1_history_integrity(out_dir: Path, crosswalk_path: Path) -> list[dict]:
     checks = []
     meta = json.loads((out_dir / "latam-history-metadata.json").read_text())
     df = pd.read_parquet(out_dir / "latam_imaging_history.parquet")
     s = meta["summary"]
 
-    ok = len(df) == s["payloads_total"] == 147
+    ok = len(df) == s["payloads_total"]
     checks.append(_result("history_row_count", "M1", ok,
                           f"{len(df)} payload rows, metadata says {s['payloads_total']}",
                           rows=int(len(df))))
@@ -33,7 +33,7 @@ def m1_history_integrity(out_dir: Path) -> list[dict]:
                           f"explicitly yes/partial/no with a source, rather than "
                           f"defaulting to non-imaging"))
 
-    xw = json.loads(Path("data/latam_imaging_crosswalk.json").read_text())["rows"]
+    xw = json.loads(crosswalk_path.read_text())["rows"]
     ids = set(df["norad_cat_id"].tolist())
     orphan = [r[0] for r in xw if r[0] not in ids]
     checks.append(_result("crosswalk_ids_resolve", "M1", not orphan,
@@ -89,21 +89,24 @@ def m2_history_chronology(out_dir: Path) -> list[dict]:
     return checks
 
 
-def history_negative_controls(out_dir: Path, raw_dir: Path) -> list[dict]:
+def history_negative_controls(out_dir: Path, raw_dir: Path,
+                              crosswalk_path: Path) -> list[dict]:
     """Re-run the build with a safeguard removed; the result must visibly degrade."""
     from . import latam
     controls = []
-    xw_path = Path("data/latam_imaging_crosswalk.json")
+
+    # Baseline full build — also reused by NC9 so both controls share one snapshot.
+    h_full = latam.build_history(raw_dir, crosswalk_path)
+    baseline = h_full["summary"]["payloads_total"]
 
     # NC8: drop the joint China/Brazil owner code -> the CBERS line vanishes.
     saved = dict(latam.COUNTRY)
     try:
         latam.COUNTRY.pop("CHBZ", None)
-        h = latam.build_history(raw_dir, xw_path)
-        lost = 147 - h["summary"]["payloads_total"]
+        h = latam.build_history(raw_dir, crosswalk_path)
+        lost = baseline - h["summary"]["payloads_total"]
         names = {r["object_name"] for r in h["rows"]}
         cbers_gone = not any(n.startswith("CBERS") for n in names)
-        first = h["summary"]["earliest_imaging_strict"]
     finally:
         latam.COUNTRY.clear(); latam.COUNTRY.update(saved)
     controls.append(_result("NC8_joint_owner_code_matters", "M2-control",
@@ -119,7 +122,6 @@ def history_negative_controls(out_dir: Path, raw_dir: Path) -> list[dict]:
     # still comes first. The assertion was wrong, not the data. The inherited
     # date does real damage in two measured places instead — per-country firsts,
     # and ordering against the 1999 CBERS-1 milestone.
-    h_full = latam.build_history(raw_dir, xw_path)
     rows = [r for r in h_full["rows"] if r["imaging"] in ("yes", "partial")]
     naive = {}
     for r in sorted(rows, key=lambda r: (r["launch_date"] or "9999", r["norad_cat_id"])):
@@ -140,8 +142,9 @@ def history_negative_controls(out_dir: Path, raw_dir: Path) -> list[dict]:
     return controls
 
 
-def verify_latam_all(out_dir: Path, raw_dir: Path) -> dict:
+def verify_latam_all(out_dir: Path, raw_dir: Path, crosswalk_path: Path) -> dict:
     return {
-        "checks": m1_history_integrity(out_dir) + m2_history_chronology(out_dir),
-        "negative_controls": history_negative_controls(out_dir, raw_dir),
+        "checks": (m1_history_integrity(out_dir, crosswalk_path)
+                   + m2_history_chronology(out_dir)),
+        "negative_controls": history_negative_controls(out_dir, raw_dir, crosswalk_path),
     }
