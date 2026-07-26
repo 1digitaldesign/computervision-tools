@@ -4,6 +4,7 @@
     satgis acquire   fetch + hash the authoritative catalog snapshot
     satgis build     snapshot -> GeoPackage / GeoJSON / GeoParquet + xBOM
     satgis access    satellite-to-ground-station geometry (Spain + LATAM)
+    satgis latam     LATAM imaging history back to the earliest catalogued record
     satgis verify    three independent methods + negative controls
     satgis package   bundle outputs + evidence for release
 
@@ -121,6 +122,50 @@ def cmd_access(args) -> int:
     return 0
 
 
+def cmd_latam(args) -> int:
+    """LATAM imaging history, back to the earliest catalogued record."""
+    import os
+    import geopandas as gpd, pandas as pd
+    from .latam import build_history
+    from .emit_access import rehash
+    from .xbom import build_xbom, write_xbom
+
+    raw, out = Path(args.raw), Path(args.out)
+    h = build_history(raw, Path(args.crosswalk))
+    df = pd.DataFrame(h["rows"])
+    df.to_parquet(out / "latam_imaging_history.parquet", index=False)
+
+    gpkg = out / "satgis_orbital_catalog.gpkg"
+    if gpkg.exists():
+        sats = gpd.read_file(gpkg, layer="satellites")
+        cur = sats.merge(df.drop(columns=["object_name"]), on="norad_cat_id", how="inner")
+        stamp = json.loads((out / "build-metadata.json").read_text())["propagation_epoch_utc"]
+        stamp = stamp.replace("+00:00", "").rstrip("Z") + ".000Z"
+        os.environ["OGR_CURRENT_DATE"] = stamp
+        try:
+            import pyogrio; pyogrio.set_gdal_config_options({"OGR_CURRENT_DATE": stamp})
+        except Exception:  # noqa: BLE001
+            pass
+        cur.to_file(gpkg, layer="latam_imaging_current", driver="GPKG")
+        cur.to_file(out / "latam_imaging_current.geojson", driver="GeoJSON")
+        cur.to_parquet(out / "latam_imaging_current.parquet", index=False)
+        print(f"on-orbit LATAM payloads with a current element set: {len(cur)}")
+
+    (out / "latam-history-metadata.json").write_text(
+        json.dumps({"schema": h["schema"], "summary": h["summary"]},
+                   indent=2, sort_keys=True, default=str) + "\n")
+    man = rehash(out)
+    bm = json.loads((out / "build-metadata.json").read_text())
+    am = json.loads((raw / "acquisition-manifest.json").read_text())
+    write_xbom(build_xbom(am, man, bm), out / "xbom.cdx.json")
+    s = h["summary"]
+    print(f"payloads {s['payloads_total']}  imaging yes/partial/no/unclassified "
+          f"{s['imaging_yes']}/{s['imaging_partial']}/{s['imaging_no']}/{s['unclassified']}")
+    print(f"earliest imaging: {s['earliest_imaging_strict']}")
+    print(f"artifacts  {man['artifact_count']} files, {man['total_bytes']/1e6:.1f} MB")
+    return 0
+
+
 def cmd_verify(args) -> int:
     from .verify import verify_all
     out = Path(args.out)
@@ -190,6 +235,10 @@ def main(argv: list[str] | None = None) -> int:
     ax.add_argument("--block", type=int, default=100,
                     help="satellites per GEMM block (memory/throughput tradeoff)")
     ax.set_defaults(func=cmd_access)
+
+    lt = common(sub.add_parser("latam"))
+    lt.add_argument("--crosswalk", default="data/latam_imaging_crosswalk.json")
+    lt.set_defaults(func=cmd_latam)
 
     common(sub.add_parser("verify")).set_defaults(func=cmd_verify)
     pk = common(sub.add_parser("package"))

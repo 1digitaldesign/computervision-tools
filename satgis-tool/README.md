@@ -348,3 +348,157 @@ retrieval timestamp of its single most important source while the data it
 described was still sitting there. A refresh failure now carries the prior
 entry forward and annotates it. The lost entry was recovered from commit
 `ebb7c6b` with the frozen bytes SHA-256-verified unchanged before restoring.
+
+---
+
+# Latin American imaging — the full catalogued record
+
+Every Latin American payload ever catalogued, back to the first entry, classified
+by whether it carried an Earth-imaging payload.
+
+| | |
+|---|---|
+| Payloads | **147** across **14** country codes, **1983-06-18 → 2026-03-30** |
+| Imaging | **82 yes · 11 partial · 54 no · 0 unclassified** |
+| On orbit / decayed | 85 / 62 |
+| Earliest imaging payload | **µSAT-1 "Víctor"** — NORAD 24291, 1996-08-29, Argentina |
+| Verification | **27/27 checks, 9/9 negative controls — PASS** |
+
+```sh
+./satgis latam
+```
+
+Scope is the **whole SATCAT (70,122 objects)**, not the 16,241 with current
+element sets — most of the region's early imagers re-entered years ago and exist
+only in the historical catalog.
+
+## Three catalog traps, each of which silently corrupts the timeline
+
+**1. Joint owner codes.** CBERS 1/2/2B/4/4A — the backbone of Brazilian Earth
+observation — carry owner code `CHBZ` (China/Brazil), not `BRAZ`. A
+national-code filter deletes the entire CBERS line. Negative control **NC8**
+proves it: removing `CHBZ` drops 5 payloads and every CBERS object vanishes.
+
+**2. Inherited ISS launch dates.** Eleven LATAM CubeSats were deployed from the
+ISS and carry the station's COSPAR designator `1998-067xx`, so their SATCAT
+`LAUNCH_DATE` reads **1998-11-20** — the launch date of Zarya. Negative control
+**NC9** measures the damage: ranking on the raw field flips the first-imager for
+Brazil, Mexico and Peru, and floats CHASQUI-1, GUARANISAT-1, GXIBA-1 and
+QUETZAL-1 to 1998, **ahead of CBERS-1**, inserting spacecraft deployed between
+2014 and 2026 into the 1990s. Flagged as `iss_deployed` / `launch_date_reliable`.
+
+**3. Missions catalogued under another nation.** Argentina's SAC-B is catalogued
+under owner `US` as the composite object "SAC-B & HETE & PEGASUS".
+
+## First imaging satellite by country
+
+Date-reliable records only; ISS-deployed CubeSats are excluded from ranking.
+
+| Date | Country | Satellite | Class | Sensor |
+|---|---|---|---|---|
+| 1996-08-29 | Argentina | µSAT-1 / Víctor (as "MICROSAT") | yes | optical |
+| 1998-07-10 | Chile | FASat-Bravo | yes | optical, 200 m |
+| 1999-10-14 | Brazil (joint) | CBERS-1 | yes | multispectral, 20 m |
+| 2012-09-29 | Venezuela | VRSS-1 | yes | optical, 2.5 m |
+| 2013-04-26 | Ecuador | NEE-01 Pegaso | partial | optical |
+| 2013-11-21 | Peru | PUCP-SAT 1 | partial | disputed |
+| 2014-06-19 | Uruguay | AntelSat | yes | optical |
+| 2018-11-29 | Colombia | FACSAT-1 | yes | optical, 30 m |
+| 2019-06-29 | Mexico | Painani-1 | yes | optical |
+
+**Bolivia and Costa Rica have never flown an imaging payload.** TKSAT-1 is a GEO
+comsat; Irazú is a store-and-forward relay for ground sensors — eoPortal states
+plainly "No camera is included", contradicting a widespread "Earth observation"
+label. Guatemala (Quetzal-1) and Paraguay (GuaraníSat-1) have imaging CubeSats
+but both are ISS-deployed, so they carry no date-reliable first record.
+
+## The earliest record is invisible to name lookups
+
+The first Latin American satellite to return an Earth image is catalogued by the
+USSF/CelesTrak SATCAT under the **generic string "MICROSAT"**, with no mission
+name at all. It is **µSAT-1**, renamed **"Víctor"** on orbit — NORAD 24291,
+COSPAR 1996-050A, built by the Centro de Investigaciones Aplicadas of the
+Instituto Universitario Aeronáutico in Córdoba, launched 1996-08-29 as a
+secondary payload on a **Molniya-M from Plesetsk** alongside Interball-2, decayed
+1999-11-12. It carried a wide-field and a narrow-field Earth-pointing camera with
+S-band image downlink, and a 1997 Argentine technical article reproduces a
+downlinked photograph.
+
+Identification rests on four catalog facts matching exactly — owner, launch date,
+launch site, decay date — against the COSPAR designator on Gunter's µSAT-1 entry.
+
+**Argentina's imaging history is a three-step chain, not one milestone**, and the
+usual summary skips two of the steps:
+
+1. **µSAT-1 / Víctor (1996)** — first to return an Earth image. A university
+   institute, not CONAE and not INVAP.
+2. **SAC-A (1998)** — first CONAE spacecraft to image Earth; a panchromatic CCD
+   returned 100+ images including the Río de la Plata and Península Valdés. CONAE
+   classifies it as a technology demonstration, not an EO mission.
+3. **SAC-C (2000)** — first *operational* EO mission: MMRS (5 bands), HRTC
+   (35 m panchromatic), flown in NASA's morning constellation.
+
+A naive "first Argentine Earth-imaging satellite" query returns SAC-C, because
+that is the milestone the literature promotes. Correct for "first operational",
+wrong for "first to return an image" — by four years and two spacecraft.
+
+## Two spacecraft that are absent from the catalog, and why
+
+- **CBERS-3** never reached orbit. Launch failure 2013-12-09; it carries the
+  failure designation COSPAR 2013-F03 and was never assigned a NORAD number.
+- **FASat-Alfa** (Chile, 1995) carried the same imaging payload as FASat-Bravo
+  but its separation mechanism failed, so it never became a free-flying object
+  and has no catalog entry — it is physically part of Sich-1 (NORAD 23657).
+
+## Brazil: two different "firsts"
+
+- **First imager in the Brazilian programme:** CBERS-1 (1999) — but a bilateral
+  spacecraft, Brazil holding a 30% cost share, built by CAST.
+- **First wholly Brazilian imaging satellite:** **Amazonia-1** (2021), per INPE's
+  own claim — designed, integrated, tested and operated by Brazil. Still
+  operational, past five years and 26,000 orbits against a 4-year design life.
+- **VCUB1** (2023) is a narrower first: the first EO satellite designed by a
+  Brazilian *company*.
+
+Everything Brazilian flown earlier is verified non-imaging. SCD-1 and SCD-2 are
+data-collection only — ESA's eoPortal states "Neither satellite conducted Earth
+remote sensing or imaging." DOVE/DO-17 (1990) was a voice beacon; the camera on
+that launch was on WEBERSAT, a US satellite.
+
+## Four premises the research refuted
+
+The classification ran as three independent research passes, each required to
+cite a source and to return low confidence rather than guess. Each was given my
+working assumptions, and each pushed back:
+
+- **"OHRIC" is not a FASat payload.** The imaging instrument is **EIS** (Earth
+  Imaging System): WAC at 2,000 m and NAC at 200 m. No source supports "OHRIC"
+  for any FASat payload; the likely confusion is **OLME**, the ozone experiment
+  on the same spacecraft, which is not an Earth imager.
+- **The VRSS instrument names were swapped.** VRSS-1 carries PMC + WMC; VRSS-2
+  carries HRC + IRC — per ABAE's own documentation and Venezuela's UNOOSA
+  presentation. The swap appears to originate in WMO OSCAR.
+- **SAC-B's instruments are ISENA and CUBIC**, not "ISOWEN" and "CUPID".
+- **LEMU NGE flies a NanoAvionics M6P bus**, not Endurosat.
+
+## Provenance and honesty of the classification
+
+Imaging status is **not derivable from the catalog** — SATCAT records no payload
+information. It comes from `data/latam_imaging_crosswalk.json`, where every entry
+carries a source URL and a confidence grade. Anything unmatched is
+`unclassified`, never defaulted to non-imaging — and the current run has **zero**
+unclassified. All 95 researched NORAD IDs resolve to a real LATAM payload in the
+frozen catalog; that resolution is itself a verification check, because a
+research pass can invent an identifier.
+
+Sources are government and agency first where they exist — `gov.br/inpe`,
+`argentina.gob.ar/conae`, `catalogos.conae.gov.ar`, `abae.gob.ve`,
+`poderespacial.fac.mil.co`, `nasa.gov`, `jaxa.jp`, ESA `eoportal.org` — with
+Gunter's Space Page as a secondary source, marked as such.
+
+## New layers
+
+| Layer | Container | Rows | Contents |
+|---|---|---|---|
+| `latam_imaging_history` | Parquet | 147 | every LATAM payload ever catalogued, with imaging class, sensor, resolution, source, confidence, ISS-date and joint-code flags |
+| `latam_imaging_current` | GPKG + GeoJSON + Parquet | 57 | the on-orbit subset joined to current propagated positions |

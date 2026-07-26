@@ -314,6 +314,11 @@ def verify_all(out_dir: Path) -> dict:
         extra = verify_access_all(out_dir)
         checks += extra["checks"]
         controls += extra["negative_controls"]
+    if (out_dir / "latam-history-metadata.json").exists():
+        from .verify_latam import verify_latam_all
+        ex2 = verify_latam_all(out_dir, Path("data/raw"))
+        checks += ex2["checks"]
+        controls += ex2["negative_controls"]
     passed = all(c["passed"] for c in checks)
     controls_ok = all(c["passed"] for c in controls)
     return {

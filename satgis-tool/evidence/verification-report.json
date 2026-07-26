@@ -1,9 +1,9 @@
 {
   "checks": [
     {
-      "artifacts": 26,
+      "artifacts": 30,
       "check": "artifact_sha256",
-      "detail": "26 artifacts verified",
+      "detail": "30 artifacts verified",
       "method": "M1",
       "passed": true
     },
@@ -131,12 +131,62 @@
       "detail": "every station is Spain or Latin America; countries=18, stations=484",
       "method": "M3",
       "passed": true
+    },
+    {
+      "check": "history_row_count",
+      "detail": "147 payload rows, metadata says 147",
+      "method": "M1",
+      "passed": true,
+      "rows": 147
+    },
+    {
+      "check": "no_unclassified_payloads",
+      "detail": "0 payloads left unclassified \u2014 every object is explicitly yes/partial/no with a source, rather than defaulting to non-imaging",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "crosswalk_ids_resolve",
+      "crosswalk_entries": 95,
+      "detail": "all 95 researched NORAD IDs resolve to a real LATAM payload in the frozen SATCAT",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "imaging_claims_are_sourced",
+      "detail": "93 imaging claims, 0 without an evidence URL",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "earliest_imager_is_musat1",
+      "detail": "earliest date-reliable imaging payload is MICROSAT (24291, 1996-08-29, Argentina) \u2014 catalogued only as the generic string 'MICROSAT', which is why name-based lookups miss it",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "cbers_line_present",
+      "detail": "5 CBERS objects retained under the joint China/Brazil owner code CHBZ (CBERS 1 (ZY 1A), CBERS 2 (ZY 1B), CBERS 2B, CBERS 4, CBERS 4A)",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "iss_dates_flagged",
+      "detail": "11 ISS-deployed payloads carry COSPAR 1998-067 and are all flagged launch_date_reliable=False, so none can contaminate a first-record ranking",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "first_by_country_consistent",
+      "detail": "first-imaging record for each of 10 countries re-reads identically from the row table",
+      "method": "M2",
+      "passed": true
     }
   ],
-  "checks_passed": 19,
-  "checks_total": 19,
-  "controls_passed": 7,
-  "controls_total": 7,
+  "checks_passed": 27,
+  "checks_total": 27,
+  "controls_passed": 9,
+  "controls_total": 9,
   "methods": {
     "M1": "integrity/CRC/schema",
     "M2": "independent physics",
@@ -182,6 +232,18 @@
     {
       "check": "NC7_mismatched_satellite_rejected",
       "detail": "randomly re-pairing stations with the wrong satellite drops containment to 5.8% (from 100.0% for true pairs), so the cross-layer check is sensitive to identity, not just geometry",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC8_joint_owner_code_matters",
+      "detail": "removing owner code CHBZ deletes 5 payloads and the entire CBERS line disappears \u2014 a national-code-only filter would silently drop the backbone of Brazilian Earth observation",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC9_iss_inherited_date_matters",
+      "detail": "ranking on the raw LAUNCH_DATE field flips the first-imager for ['Brazil', 'Mexico', 'Peru'] and floats 4 ISS-deployed CubeSats (CHASQUI-1, GUARANISAT-1, GXIBA-1, QUETZAL-1) to 1998-11-20, ahead of CBERS-1 (1999-10-14) \u2014 inserting spacecraft deployed between 2014 and 2026 into the 1990s",
       "method": "M2-control",
       "passed": true
     }

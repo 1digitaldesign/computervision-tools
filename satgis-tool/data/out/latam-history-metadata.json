@@ -1,0 +1,108 @@
+{
+  "schema": "satgis.latam-imaging-history/1",
+  "summary": {
+    "countries": [
+      "Argentina",
+      "Bolivia",
+      "Brazil",
+      "Chile",
+      "China/Brazil (joint)",
+      "Colombia",
+      "Costa Rica",
+      "Ecuador",
+      "Guatemala",
+      "Mexico",
+      "Paraguay",
+      "Peru",
+      "Uruguay",
+      "Venezuela"
+    ],
+    "decayed": 62,
+    "earliest_imaging_strict": {
+      "country": "Argentina",
+      "launch_date": "1996-08-29",
+      "norad_cat_id": 24291,
+      "object_name": "MICROSAT"
+    },
+    "earliest_payload": "1983-06-18",
+    "first_imaging_by_country": {
+      "Argentina": {
+        "imaging": "yes",
+        "launch_date": "1996-08-29",
+        "norad_cat_id": 24291,
+        "object_name": "MICROSAT",
+        "sensor_type": "optical"
+      },
+      "Brazil": {
+        "imaging": "yes",
+        "launch_date": "1999-10-14",
+        "norad_cat_id": 25940,
+        "object_name": "CBERS 1 (ZY 1A)",
+        "sensor_type": "multispectral"
+      },
+      "Chile": {
+        "imaging": "yes",
+        "launch_date": "1998-07-10",
+        "norad_cat_id": 25395,
+        "object_name": "FASAT B",
+        "sensor_type": "optical"
+      },
+      "China/Brazil (joint)": {
+        "imaging": "yes",
+        "launch_date": "1999-10-14",
+        "norad_cat_id": 25940,
+        "object_name": "CBERS 1 (ZY 1A)",
+        "sensor_type": "multispectral"
+      },
+      "Colombia": {
+        "imaging": "yes",
+        "launch_date": "2018-11-29",
+        "norad_cat_id": 43721,
+        "object_name": "FACSAT-1",
+        "sensor_type": "optical"
+      },
+      "Ecuador": {
+        "imaging": "partial",
+        "launch_date": "2013-04-26",
+        "norad_cat_id": 39151,
+        "object_name": "NEE-01 PEGASO",
+        "sensor_type": "optical"
+      },
+      "Mexico": {
+        "imaging": "yes",
+        "launch_date": "2019-06-29",
+        "norad_cat_id": 44365,
+        "object_name": "PAINANI 1",
+        "sensor_type": "optical"
+      },
+      "Peru": {
+        "imaging": "partial",
+        "launch_date": "2013-11-21",
+        "norad_cat_id": 39442,
+        "object_name": "PUCP-SAT 1",
+        "sensor_type": "unknown"
+      },
+      "Uruguay": {
+        "imaging": "yes",
+        "launch_date": "2014-06-19",
+        "norad_cat_id": 40034,
+        "object_name": "ANTELSAT",
+        "sensor_type": "optical"
+      },
+      "Venezuela": {
+        "imaging": "yes",
+        "launch_date": "2012-09-29",
+        "norad_cat_id": 38782,
+        "object_name": "VRSS-1",
+        "sensor_type": "optical"
+      }
+    },
+    "imaging_no": 54,
+    "imaging_partial": 11,
+    "imaging_yes": 82,
+    "iss_deployed_with_inherited_date": 11,
+    "on_orbit": 85,
+    "payloads_total": 147,
+    "unclassified": 0
+  }
+}

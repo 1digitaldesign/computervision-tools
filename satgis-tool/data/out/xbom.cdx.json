@@ -1485,6 +1485,106 @@
       "hashes": [
         {
           "alg": "SHA-256",
+          "content": "7c3899776fd3a4725ed23e60db81a6c627bd5afeb811ea0b52a4299bb4378ff3"
+        }
+      ],
+      "name": "latam-history-metadata.json",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "JSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "2747"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2d23accaf0b167bfffc7a92e288d34a6551219649ec302abb0e5c9814d3af68"
+        }
+      ],
+      "name": "latam_imaging_current.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "107149"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dadba52b2957f5ad5f5c69bfd61f948026fd6e791620c3d61810d3d4d2760b67"
+        }
+      ],
+      "name": "latam_imaging_current.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "59082"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e20f1439305e0f17c34a39fecde9e7aa6a051e1a8cf9b5fc8a1da991b425a707"
+        }
+      ],
+      "name": "latam_imaging_history.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "25813"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
           "content": "c5ef12f9bdf6c0613d4ff3f6a64438b06f5225d35294e5aa37cc5c7239e0ae1c"
         }
       ],
@@ -1560,7 +1660,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0cc325c26137b4be190ed881d7b8930eda491f5754723cf1fda9047edd0eee42"
+          "content": "d8a2dd5a83aaec3c6994691e408112aa3ac61fdb971d499810d3d9202a2e859a"
         }
       ],
       "name": "satgis_orbital_catalog.gpkg",
@@ -1571,7 +1671,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "53063680"
+          "value": "53112832"
         },
         {
           "name": "satgis:features",
@@ -1665,7 +1765,7 @@
         "value": "false"
       }
     ],
-    "timestamp": "2026-07-26T05:26:49+00:00",
+    "timestamp": "2026-07-26T06:03:11+00:00",
     "tools": {
       "components": [
         {

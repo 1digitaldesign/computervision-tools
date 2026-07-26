@@ -18,6 +18,7 @@ satgis-tool/data/out/footprints.geojson
 satgis-tool/data/out/ground_tracks.geojson
 satgis-tool/data/out/access_windows.parquet
 satgis-tool/data/out/access_epoch.parquet
+satgis-tool/data/out/latam_imaging_current.parquet
 satgis-tool/dist/
 
 # OS

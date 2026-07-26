@@ -1,0 +1,39 @@
+  [PASS] M1          artifact_sha256                            30 artifacts verified
+  [PASS] M1          gpkg_schema_and_counts                     3 layers: counts, CRS, validity all conform
+  [PASS] M1          required_columns                           all required columns present
+  [PASS] M2          proj_vs_bowring_datum                      max dlat=2.132e-14 deg, dlon=2.842e-14 deg, dalt=2.980e-08 m
+  [PASS] M2          reference_iss_25544                        alt=426.9 km (expect 330-470), speed=7.657 km/s (expect 7.5-7.9)
+  [PASS] M2          reference_goes_geostationary               n=4 alt=35786-35789 km, |lat|max=0.446 deg, v=3.075-3.075 km/s
+  [PASS] M2          kepler_third_law                           100.00% of 16241 objects agree with T=2*pi*sqrt(a^3/mu) within 2%
+  [PASS] M3          subsatellite_point_in_footprint            16241/16241 (100.000%) footprints contain their own subsatellite point
+  [PASS] M3          world_bounds                               footprint bounds [np.float64(-180.0), np.float64(-90.0), np.float64(180.0), np.float64(90.0)] within EPSG:4326 domain
+  [PASS] M3          cap_radius_monotone_in_altitude            Spearman rho(alt_km, radius_km) = 1.000000000 (expect ~1.0)
+  [PASS] M3          ground_tracks_non_empty                    16241 tracks, 0 empty
+  [PASS] M1          access_gpkg_layers                         ground_stations + station_access_summary conform
+  [PASS] M1          access_window_bounds                       7,685,471 pairs: minutes in [0, 1440], max elevation in [5, 90]
+  [PASS] M2          crosslayer_footprint_vs_elevation          4998/5000 (99.960%) of sampled elev>=0 pairs place the station inside that satellite's independently-derived footprint cap
+  [PASS] M2          never_visible_are_not_leo                  204 satellites never rise above the mask in 24 h; {'GEO': 192, 'MEO': 9, 'HEO': 3} — zero are LEO, as required: a LEO object's ground track sweeps all longitudes within 24 h, so it cannot hide from 484 stations, whereas a GEO object parked over a non-visible longitude never rises.
+  [PASS] M2          passes_rise_with_latitude                  Spearman rho(|latitude|, passes) = 0.8772 over 484 stations; 10-degree latitude bands give strictly increasing mean pass counts (56,983, 61,400, 70,929, 84,550, 86,666) — polar and sun-synchronous orbits converge toward the poles
+  [PASS] M2          gemm_precision_bound                       float32 vs float64 elevation: p99 3.97e-05 deg, mean 6.26e-06 deg over 7,860,644 pairs
+  [PASS] M3          station_country_assignment                 458 strictly-contained stations, 100.000% re-derive the same ISO code on an independent spatial join
+  [PASS] M3          region_scope                               every station is Spain or Latin America; countries=18, stations=484
+  [PASS] M1          history_row_count                          147 payload rows, metadata says 147
+  [PASS] M1          no_unclassified_payloads                   0 payloads left unclassified — every object is explicitly yes/partial/no with a source, rather than defaulting to non-imaging
+  [PASS] M1          crosswalk_ids_resolve                      all 95 researched NORAD IDs resolve to a real LATAM payload in the frozen SATCAT
+  [PASS] M1          imaging_claims_are_sourced                 93 imaging claims, 0 without an evidence URL
+  [PASS] M2          earliest_imager_is_musat1                  earliest date-reliable imaging payload is MICROSAT (24291, 1996-08-29, Argentina) — catalogued only as the generic string 'MICROSAT', which is why name-based lookups miss it
+  [PASS] M2          cbers_line_present                         5 CBERS objects retained under the joint China/Brazil owner code CHBZ (CBERS 1 (ZY 1A), CBERS 2 (ZY 1B), CBERS 2B, CBERS 4, CBERS 4A)
+  [PASS] M2          iss_dates_flagged                          11 ISS-deployed payloads carry COSPAR 1998-067 and are all flagged launch_date_reliable=False, so none can contaminate a first-record ranking
+  [PASS] M2          first_by_country_consistent                first-imaging record for each of 10 countries re-reads identically from the row table
+  [PASS] M1-control  NC1_bitflip_detected                       single-byte flip in access_epoch.parquet detected; original restored
+  [PASS] M3-control  NC2_antipodal_point_rejected               0 expected; 0/2000 antipodal points fell inside their own cap. Max central angle over the whole catalog is 87.340 deg (< 90 deg), so the antipode is provably exterior for every object.
+  [PASS] M3-control  NC3_shuffled_altitude_breaks_monotonicity  Spearman rho collapses to 0.000348 under a seeded altitude permutation (expect ~0)
+  [PASS] M2-control  NC4_datum_perturbation_detected            a 25 km Z-axis injection moves max dlat to 0.216397 deg, far above the 1e-8 deg pass threshold
+  [PASS] M2-control  NC5_station_longitude_shift_rejected       after a +90 deg longitude shift only 456/3000 (15.2%) stations remain inside the cap that contained them
+  [PASS] M1-control  NC6_mask_monotonicity_in_time              raising the mask cannot add access time: minutes(5)<=minutes(0) violated 0 times, minutes(10)<=minutes(5) violated 0 times, across 7,685,471 pairs. Pass *count* is deliberately not asserted monotone — 2,798 pairs (0.0364%, all MEO/GEO/HEO) legitimately split one lower-mask contact into several higher-mask contacts.
+  [PASS] M2-control  NC7_mismatched_satellite_rejected          randomly re-pairing stations with the wrong satellite drops containment to 5.8% (from 100.0% for true pairs), so the cross-layer check is sensitive to identity, not just geometry
+  [PASS] M2-control  NC8_joint_owner_code_matters               removing owner code CHBZ deletes 5 payloads and the entire CBERS line disappears — a national-code-only filter would silently drop the backbone of Brazilian Earth observation
+  [PASS] M2-control  NC9_iss_inherited_date_matters             ranking on the raw LAUNCH_DATE field flips the first-imager for ['Brazil', 'Mexico', 'Peru'] and floats 4 ISS-deployed CubeSats (CHASQUI-1, GUARANISAT-1, GXIBA-1, QUETZAL-1) to 1998-11-20, ahead of CBERS-1 (1999-10-14) — inserting spacecraft deployed between 2014 and 2026 into the 1990s
+
+checks 27/27  controls 9/9  VERDICT: PASS
+report -> evidence/verification-report.json
