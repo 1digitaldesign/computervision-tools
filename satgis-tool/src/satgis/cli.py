@@ -3,6 +3,7 @@
     satgis doctor    environment and dependency preflight
     satgis acquire   fetch + hash the authoritative catalog snapshot
     satgis build     snapshot -> GeoPackage / GeoJSON / GeoParquet + xBOM
+    satgis access    satellite-to-ground-station geometry (Spain + LATAM)
     satgis verify    three independent methods + negative controls
     satgis package   bundle outputs + evidence for release
 
@@ -62,8 +63,8 @@ def cmd_doctor(args) -> int:
 
 def cmd_acquire(args) -> int:
     from .acquire import acquire_all
-    m = acquire_all(Path(args.raw))
-    print(f"\nsources={len(m['sources'])} failures={len(m['failures'])}")
+    m = acquire_all(Path(args.raw), refresh=getattr(args, "refresh", False))
+    print(f"\nsources={len(m['sources'])} failures={len(m['failures'])} states={m['states']}")
     return 0 if not m["failures"] else 2
 
 
@@ -92,6 +93,31 @@ def cmd_build(args) -> int:
                     built["metadata"])
     write_xbom(xb, out / "xbom.cdx.json")
     print(f"xbom       {len(xb['components'])} components -> xbom.cdx.json")
+    return 0
+
+
+def cmd_access(args) -> int:
+    """Ground-station access: every satellite against every Spain + LATAM station."""
+    import geopandas as gpd
+    from .build_access import build_access
+    from .emit_access import emit_access, rehash
+    from .xbom import build_xbom, write_xbom
+
+    epoch = _epoch(args.epoch)
+    raw, out = Path(args.raw), Path(args.out)
+    gpkg = out / "satgis_orbital_catalog.gpkg"
+    if not gpkg.exists():
+        print(f"ERROR: {gpkg} not found — run `satgis build` first.")
+        return 2
+    res = build_access(raw, epoch, hours=args.hours, step_s=args.step,
+                       block=args.block)
+    sats = gpd.read_file(gpkg, layer="satellites")
+    emit_access(res, sats, out)
+    man = rehash(out)
+    bm = json.loads((out / "build-metadata.json").read_text())
+    am = json.loads((raw / "acquisition-manifest.json").read_text())
+    write_xbom(build_xbom(am, man, bm), out / "xbom.cdx.json")
+    print(f"artifacts  {man['artifact_count']} files, {man['total_bytes']/1e6:.1f} MB")
     return 0
 
 
@@ -142,7 +168,10 @@ def main(argv: list[str] | None = None) -> int:
         return sp
 
     common(sub.add_parser("doctor")).set_defaults(func=cmd_doctor)
-    common(sub.add_parser("acquire")).set_defaults(func=cmd_acquire)
+    ac = common(sub.add_parser("acquire"))
+    ac.add_argument("--refresh", action="store_true",
+                    help="force re-fetch even when the frozen artifact is intact")
+    ac.set_defaults(func=cmd_acquire)
 
     b = common(sub.add_parser("build"))
     b.add_argument("--epoch", default="now",
@@ -152,6 +181,15 @@ def main(argv: list[str] | None = None) -> int:
     b.add_argument("--track-points", type=int, default=60)
     b.add_argument("--ring-points", type=int, default=72)
     b.set_defaults(func=cmd_build)
+
+    ax = common(sub.add_parser("access"))
+    ax.add_argument("--epoch", default="now")
+    ax.add_argument("--hours", type=float, default=24.0)
+    ax.add_argument("--step", type=float, default=60.0,
+                    help="time-grid step in seconds")
+    ax.add_argument("--block", type=int, default=100,
+                    help="satellites per GEMM block (memory/throughput tradeoff)")
+    ax.set_defaults(func=cmd_access)
 
     common(sub.add_parser("verify")).set_defaults(func=cmd_verify)
     pk = common(sub.add_parser("package"))

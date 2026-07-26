@@ -1,9 +1,9 @@
 {
   "checks": [
     {
-      "artifacts": 18,
+      "artifacts": 26,
       "check": "artifact_sha256",
-      "detail": "18 artifacts verified",
+      "detail": "26 artifacts verified",
       "method": "M1",
       "passed": true
     },
@@ -73,12 +73,70 @@
       "detail": "16241 tracks, 0 empty",
       "method": "M3",
       "passed": true
+    },
+    {
+      "check": "access_gpkg_layers",
+      "detail": "ground_stations + station_access_summary conform",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "access_window_bounds",
+      "detail": "7,685,471 pairs: minutes in [0, 1440], max elevation in [5, 90]",
+      "method": "M1",
+      "pairs": 7685471,
+      "passed": true
+    },
+    {
+      "check": "crosslayer_footprint_vs_elevation",
+      "detail": "4998/5000 (99.960%) of sampled elev>=0 pairs place the station inside that satellite's independently-derived footprint cap",
+      "fraction": 0.9996,
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "by_class": {
+        "GEO": 192,
+        "HEO": 3,
+        "MEO": 9
+      },
+      "check": "never_visible_are_not_leo",
+      "detail": "204 satellites never rise above the mask in 24 h; {'GEO': 192, 'MEO': 9, 'HEO': 3} \u2014 zero are LEO, as required: a LEO object's ground track sweeps all longitudes within 24 h, so it cannot hide from 484 stations, whereas a GEO object parked over a non-visible longitude never rises.",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "bands_monotone": true,
+      "check": "passes_rise_with_latitude",
+      "detail": "Spearman rho(|latitude|, passes) = 0.8772 over 484 stations; 10-degree latitude bands give strictly increasing mean pass counts (56,983, 61,400, 70,929, 84,550, 86,666) \u2014 polar and sun-synchronous orbits converge toward the poles",
+      "method": "M2",
+      "passed": true,
+      "spearman_rho": 0.8771791884882899
+    },
+    {
+      "check": "gemm_precision_bound",
+      "detail": "float32 vs float64 elevation: p99 3.97e-05 deg, mean 6.26e-06 deg over 7,860,644 pairs",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "agreement": 1.0,
+      "check": "station_country_assignment",
+      "detail": "458 strictly-contained stations, 100.000% re-derive the same ISO code on an independent spatial join",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "region_scope",
+      "detail": "every station is Spain or Latin America; countries=18, stations=484",
+      "method": "M3",
+      "passed": true
     }
   ],
-  "checks_passed": 11,
-  "checks_total": 11,
-  "controls_passed": 4,
-  "controls_total": 4,
+  "checks_passed": 19,
+  "checks_total": 19,
+  "controls_passed": 7,
+  "controls_total": 7,
   "methods": {
     "M1": "integrity/CRC/schema",
     "M2": "independent physics",
@@ -87,7 +145,7 @@
   "negative_controls": [
     {
       "check": "NC1_bitflip_detected",
-      "detail": "single-byte flip in footprints.parquet detected; original restored",
+      "detail": "single-byte flip in access_epoch.parquet detected; original restored",
       "method": "M1-control",
       "passed": true
     },
@@ -106,6 +164,24 @@
     {
       "check": "NC4_datum_perturbation_detected",
       "detail": "a 25 km Z-axis injection moves max dlat to 0.216397 deg, far above the 1e-8 deg pass threshold",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC5_station_longitude_shift_rejected",
+      "detail": "after a +90 deg longitude shift only 456/3000 (15.2%) stations remain inside the cap that contained them",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC6_mask_monotonicity_in_time",
+      "detail": "raising the mask cannot add access time: minutes(5)<=minutes(0) violated 0 times, minutes(10)<=minutes(5) violated 0 times, across 7,685,471 pairs. Pass *count* is deliberately not asserted monotone \u2014 2,798 pairs (0.0364%, all MEO/GEO/HEO) legitimately split one lower-mask contact into several higher-mask contacts.",
+      "method": "M1-control",
+      "passed": true
+    },
+    {
+      "check": "NC7_mismatched_satellite_rejected",
+      "detail": "randomly re-pairing stations with the wrong satellite drops containment to 5.8% (from 100.0% for true pairs), so the cross-layer check is sensitive to identity, not just geometry",
       "method": "M2-control",
       "passed": true
     }

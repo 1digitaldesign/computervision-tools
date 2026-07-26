@@ -16,6 +16,8 @@ satgis-tool/data/out/*.parquet
 satgis-tool/data/out/satellites.geojson
 satgis-tool/data/out/footprints.geojson
 satgis-tool/data/out/ground_tracks.geojson
+satgis-tool/data/out/access_windows.parquet
+satgis-tool/data/out/access_epoch.parquet
 satgis-tool/dist/
 
 # OS

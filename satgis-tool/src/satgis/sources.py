@@ -71,5 +71,45 @@ def gp_source(group: str) -> Source:
     )
 
 
+# --- Ground-station registries and boundaries -------------------------------
+# Station geodesy comes from the operators' own SPICE frame kernels rather than
+# from prose on a web page: these are the files ESA and NASA publish for
+# spacecraft navigation, so the coordinates are the ones actually flown.
+STATION_SOURCES: tuple[Source, ...] = (
+    Source(
+        key="esa.estrack_v03",
+        url="https://spiftp.esac.esa.int/data/SPICE/JUICE/kernels/fk/estrack_v03.tf",
+        kind="text",
+        authority="European Space Agency / ESAC SPICE Service",
+        license="ESA SPICE kernels, freely redistributable for scientific use",
+        description="SPICE topocentric frame kernel for the ESTRACK ground station network.",
+    ),
+    Source(
+        key="nasa.naif.earth_topo_260717",
+        url="https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/stations/earth_topo_260717.tf",
+        kind="text",
+        authority="NASA JPL / NAIF",
+        license="US Government work (uncopyrightable, 17 U.S.C. \u00a7105)",
+        description="SPICE topocentric frame kernel for NASA Deep Space Network stations.",
+    ),
+    Source(
+        key="satnogs.stations",
+        url="https://network.satnogs.org/api/stations/?format=json&page=1",
+        kind="json",
+        authority="SatNOGS Network (Libre Space Foundation)",
+        license="Open data, AGPL-3.0 platform; station data operator-reported",
+        description="Open ground-station registry: position, altitude, horizon mask, status.",
+    ),
+    Source(
+        key="naturalearth.admin0_50m",
+        url="https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip",
+        kind="zip",
+        authority="Natural Earth (NACIS)",
+        license="Public domain",
+        description="Admin-0 country polygons, used for geometric country assignment and the regional AOI.",
+    ),
+)
+
+
 def all_sources() -> list[Source]:
-    return [SATCAT] + [gp_source(g) for g in GP_GROUPS]
+    return [SATCAT] + [gp_source(g) for g in GP_GROUPS] + list(STATION_SOURCES)

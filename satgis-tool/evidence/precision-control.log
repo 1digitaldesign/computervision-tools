@@ -1,0 +1,5 @@
+stratified sample: 300 satellites (150 LEO + 150 MEO/GEO/HEO) x 484 stations
+  mask  0.0 deg : pass-count disagreements 0 / 145,200 pairs = 0.0000%
+  mask  5.0 deg : pass-count disagreements 0 / 145,200 pairs = 0.0000%
+  mask 10.0 deg : pass-count disagreements 0 / 145,200 pairs = 0.0000%
+  max |access-minutes difference| = 1.0 min

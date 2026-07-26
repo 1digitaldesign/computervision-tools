@@ -309,6 +309,11 @@ def negative_controls(out_dir: Path) -> list[dict]:
 def verify_all(out_dir: Path) -> dict:
     checks = m1_integrity(out_dir) + m2_physics(out_dir) + m3_topology(out_dir)
     controls = negative_controls(out_dir)
+    if (out_dir / "access-metadata.json").exists():
+        from .verify_access import verify_access_all
+        extra = verify_access_all(out_dir)
+        checks += extra["checks"]
+        controls += extra["negative_controls"]
     passed = all(c["passed"] for c in checks)
     controls_ok = all(c["passed"] for c in controls)
     return {
