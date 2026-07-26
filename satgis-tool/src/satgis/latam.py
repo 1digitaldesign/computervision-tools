@@ -44,6 +44,7 @@ COUNTRY = {
 EXTERNAL = {24645: ("Argentina", "SAC-B, catalogued under owner US as a composite object")}
 
 ISS_COSPAR_PREFIX = "1998-067"
+ISS_LAUNCH_DATE = "1998-11-20"   # Zarya; the date every 1998-067xx piece inherits
 
 # Satellogic's constellation is large, uniform in purpose and grows every year;
 # a name rule is the maintainable owner of that classification, and it is
@@ -59,6 +60,21 @@ NAME_RULES = (
 
 IMG = {"Y": "yes", "P": "partial", "N": "no"}
 CONF = {"H": "high", "M": "medium", "L": "low"}
+
+
+def load_deployments(path: Path) -> dict:
+    """Sourced free-flight dates for ISS-deployed payloads.
+
+    Recorded date is FREE FLIGHT, not ejection from the station. Tancredo-1 is
+    the case that forces the distinction: it left the ISS on 2017-01-16 stowed
+    inside TuPOD, a 3D-printed dispenser, and only became a free-flying object
+    when TuPOD released it on 2017-01-19. Using the ejection date would encode a
+    silent three-day error.
+    """
+    if not path.exists():
+        return {}
+    doc = json.loads(path.read_text())
+    return {int(k): v for k, v in doc["deployments"].items()}
 
 
 def load_crosswalk(path: Path) -> dict:
@@ -84,8 +100,11 @@ def classify(rec: dict, crosswalk: dict) -> dict:
             "evidence_url": None, "classified_by": "unmatched"}
 
 
-def build_history(raw_dir: Path, crosswalk_path: Path) -> dict:
+def build_history(raw_dir: Path, crosswalk_path: Path,
+                  deployments_path: Path | None = None) -> dict:
     crosswalk = load_crosswalk(crosswalk_path)
+    deployments = load_deployments(
+        deployments_path or crosswalk_path.parent / "iss_deployments.json")
     with (raw_dir / "celestrak.satcat.csv").open(newline="", encoding="utf-8") as fh:
         recs = list(csv.DictReader(fh))
 
@@ -104,6 +123,12 @@ def build_history(raw_dir: Path, crosswalk_path: Path) -> dict:
             continue
         cls = classify(r, crosswalk)
         iss = (r["OBJECT_ID"] or "").startswith(ISS_COSPAR_PREFIX)
+        dep = deployments.get(nid) if iss else None
+        launch = r["LAUNCH_DATE"] or None
+        # effective_date is the field to reason about time with: the sourced
+        # free-flight date where the catalog's is the station's, else the
+        # catalog's own launch date.
+        effective = (dep or {}).get("deployment_date") or (None if iss else launch)
         rows.append({
             "norad_cat_id": nid,
             "object_id": r["OBJECT_ID"],
@@ -120,6 +145,13 @@ def build_history(raw_dir: Path, crosswalk_path: Path) -> dict:
             "inclination_deg": _num(r["INCLINATION"]),
             "iss_deployed": iss,
             "launch_date_reliable": not iss,
+            "deployment_date": (dep or {}).get("deployment_date"),
+            "iss_ejection_date": (dep or {}).get("iss_ejection_date"),
+            "deployment_source": (dep or {}).get("source"),
+            "effective_date": effective,
+            "effective_date_known": effective is not None,
+            "date_basis": ("sourced ISS free-flight deployment" if dep
+                           else ("catalog launch date" if not iss else "UNRESOLVED")),
             "date_caveat": ("launch_date inherited from the ISS COSPAR designator "
                             "1998-067; true deployment was years later" if iss else None),
             "external_catalog_note": ext_note,
@@ -128,19 +160,21 @@ def build_history(raw_dir: Path, crosswalk_path: Path) -> dict:
     rows.sort(key=lambda x: (x["launch_date"] or "9999", x["norad_cat_id"]))
 
     imaging = [r for r in rows if r["imaging"] in ("yes", "partial")]
-    datable = [r for r in imaging if r["launch_date_reliable"]]
+    datable = [r for r in imaging if r["effective_date_known"]]
     firsts = {}
-    for r in sorted(datable, key=lambda x: x["launch_date"]):
+    for r in sorted(datable, key=lambda x: x["effective_date"]):
         for c in ([r["country"]] if "joint" not in r["country"] else ["Brazil", r["country"]]):
             firsts.setdefault(c, [])
             if not any(f["imaging"] == "yes" for f in firsts[c]) or r["imaging"] == "yes":
                 firsts[c].append({"norad_cat_id": r["norad_cat_id"],
                                   "object_name": r["object_name"],
-                                  "launch_date": r["launch_date"],
+                                  "effective_date": r["effective_date"],
+                                  "date_basis": r["date_basis"],
                                   "imaging": r["imaging"],
                                   "sensor_type": r["sensor_type"]})
     first_by_country = {c: v[0] for c, v in firsts.items()}
-    first_strict = [r for r in datable if r["imaging"] == "yes"]
+    first_strict = sorted([r for r in datable if r["imaging"] == "yes"],
+                          key=lambda x: x["effective_date"])
 
     return {
         "schema": "satgis.latam-imaging-history/1",
@@ -154,12 +188,14 @@ def build_history(raw_dir: Path, crosswalk_path: Path) -> dict:
             "on_orbit": sum(1 for r in rows if r["on_orbit"]),
             "decayed": sum(1 for r in rows if not r["on_orbit"]),
             "iss_deployed_with_inherited_date": sum(1 for r in rows if r["iss_deployed"]),
+            "iss_deployment_dates_resolved": sum(1 for r in rows if r["deployment_date"]),
+            "effective_date_unresolved": sum(1 for r in rows if not r["effective_date_known"]),
             "countries": sorted({r["country"] for r in rows}),
             "earliest_payload": rows[0]["launch_date"] if rows else None,
             "earliest_imaging_strict": (
                 {"norad_cat_id": first_strict[0]["norad_cat_id"],
                  "object_name": first_strict[0]["object_name"],
-                 "launch_date": first_strict[0]["launch_date"],
+                 "effective_date": first_strict[0]["effective_date"],
                  "country": first_strict[0]["country"]} if first_strict else None),
             "first_imaging_by_country": first_by_country,
         },

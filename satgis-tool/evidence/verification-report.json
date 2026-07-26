@@ -178,15 +178,40 @@
     },
     {
       "check": "first_by_country_consistent",
-      "detail": "first-imaging record for each of 10 countries re-reads identically from the row table",
+      "detail": "first-imaging record for each of 12 countries re-reads identically from the row table",
       "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "iss_deployment_dates_resolved",
+      "detail": "11 ISS-deployed payloads: 11 have a sourced free-flight date, 0 lack a source URL",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "deployment_after_station_launch",
+      "detail": "every deployment date postdates Zarya (1998-11-20); range 2014-02-28 to 2026-02-03",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "deployment_order_matches_catalog_order",
+      "detail": "Spearman rho(NORAD catalog number, sourced deployment date) = 1.0000 over 11 ISS-deployed payloads \u2014 the USSF cataloguing order independently corroborates dates taken from JAXA/NASA/AMSAT releases",
+      "method": "M2",
+      "passed": true,
+      "spearman_rho": 1.0
+    },
+    {
+      "check": "all_effective_dates_known",
+      "detail": "0 of 147 payloads lack a usable date; every object can be placed on the timeline",
+      "method": "M1",
       "passed": true
     }
   ],
-  "checks_passed": 27,
-  "checks_total": 27,
-  "controls_passed": 9,
-  "controls_total": 9,
+  "checks_passed": 31,
+  "checks_total": 31,
+  "controls_passed": 10,
+  "controls_total": 10,
   "methods": {
     "M1": "integrity/CRC/schema",
     "M2": "independent physics",
@@ -244,6 +269,12 @@
     {
       "check": "NC9_iss_inherited_date_matters",
       "detail": "ranking on the raw LAUNCH_DATE field flips the first-imager for ['Brazil', 'Mexico', 'Peru'] and floats 4 ISS-deployed CubeSats (CHASQUI-1, GUARANISAT-1, GXIBA-1, QUETZAL-1) to 1998-11-20, ahead of CBERS-1 (1999-10-14) \u2014 inserting spacecraft deployed between 2014 and 2026 into the 1990s",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC10_shuffled_deployment_dates_break_ordering",
+      "detail": "true rho(catalog number, deployment date) = 1.0000; under a seeded permutation of the same dates it falls to 0.2364, so the agreement is carrying information rather than being an artefact of having eleven sorted rows",
       "method": "M2-control",
       "passed": true
     }

@@ -131,7 +131,7 @@ def cmd_latam(args) -> int:
     from .xbom import build_xbom, write_xbom
 
     raw, out = Path(args.raw), Path(args.out)
-    h = build_history(raw, Path(args.crosswalk))
+    h = build_history(raw, Path(args.crosswalk), Path(args.deployments))
     df = pd.DataFrame(h["rows"])
     df.to_parquet(out / "latam_imaging_history.parquet", index=False)
 
@@ -238,6 +238,7 @@ def main(argv: list[str] | None = None) -> int:
 
     lt = common(sub.add_parser("latam"))
     lt.add_argument("--crosswalk", default="data/latam_imaging_crosswalk.json")
+    lt.add_argument("--deployments", default="data/iss_deployments.json")
     lt.set_defaults(func=cmd_latam)
 
     common(sub.add_parser("verify")).set_defaults(func=cmd_verify)

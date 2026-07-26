@@ -1,3 +1,7 @@
+/Users/machine/github/computervision-tools/satgis-tool/.venv/lib/python3.12/site-packages/pyarrow/compute.py:230: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
+/Users/machine/github/computervision-tools/satgis-tool/.venv/lib/python3.12/site-packages/pyarrow/compute.py:230: FutureWarning: Specifying null_placement in RankOptions is deprecated as of 25.0.0. Specify null_placement per sort_key instead.
+  return options_class(*args, **kwargs)
   [PASS] M1          artifact_sha256                            30 artifacts verified
   [PASS] M1          gpkg_schema_and_counts                     3 layers: counts, CRS, validity all conform
   [PASS] M1          required_columns                           all required columns present
@@ -24,7 +28,11 @@
   [PASS] M2          earliest_imager_is_musat1                  earliest date-reliable imaging payload is MICROSAT (24291, 1996-08-29, Argentina) — catalogued only as the generic string 'MICROSAT', which is why name-based lookups miss it
   [PASS] M2          cbers_line_present                         5 CBERS objects retained under the joint China/Brazil owner code CHBZ (CBERS 1 (ZY 1A), CBERS 2 (ZY 1B), CBERS 2B, CBERS 4, CBERS 4A)
   [PASS] M2          iss_dates_flagged                          11 ISS-deployed payloads carry COSPAR 1998-067 and are all flagged launch_date_reliable=False, so none can contaminate a first-record ranking
-  [PASS] M2          first_by_country_consistent                first-imaging record for each of 10 countries re-reads identically from the row table
+  [PASS] M2          first_by_country_consistent                first-imaging record for each of 12 countries re-reads identically from the row table
+  [PASS] M1          iss_deployment_dates_resolved              11 ISS-deployed payloads: 11 have a sourced free-flight date, 0 lack a source URL
+  [PASS] M2          deployment_after_station_launch            every deployment date postdates Zarya (1998-11-20); range 2014-02-28 to 2026-02-03
+  [PASS] M2          deployment_order_matches_catalog_order     Spearman rho(NORAD catalog number, sourced deployment date) = 1.0000 over 11 ISS-deployed payloads — the USSF cataloguing order independently corroborates dates taken from JAXA/NASA/AMSAT releases
+  [PASS] M1          all_effective_dates_known                  0 of 147 payloads lack a usable date; every object can be placed on the timeline
   [PASS] M1-control  NC1_bitflip_detected                       single-byte flip in access_epoch.parquet detected; original restored
   [PASS] M3-control  NC2_antipodal_point_rejected               0 expected; 0/2000 antipodal points fell inside their own cap. Max central angle over the whole catalog is 87.340 deg (< 90 deg), so the antipode is provably exterior for every object.
   [PASS] M3-control  NC3_shuffled_altitude_breaks_monotonicity  Spearman rho collapses to 0.000348 under a seeded altitude permutation (expect ~0)
@@ -34,6 +42,7 @@
   [PASS] M2-control  NC7_mismatched_satellite_rejected          randomly re-pairing stations with the wrong satellite drops containment to 5.8% (from 100.0% for true pairs), so the cross-layer check is sensitive to identity, not just geometry
   [PASS] M2-control  NC8_joint_owner_code_matters               removing owner code CHBZ deletes 5 payloads and the entire CBERS line disappears — a national-code-only filter would silently drop the backbone of Brazilian Earth observation
   [PASS] M2-control  NC9_iss_inherited_date_matters             ranking on the raw LAUNCH_DATE field flips the first-imager for ['Brazil', 'Mexico', 'Peru'] and floats 4 ISS-deployed CubeSats (CHASQUI-1, GUARANISAT-1, GXIBA-1, QUETZAL-1) to 1998-11-20, ahead of CBERS-1 (1999-10-14) — inserting spacecraft deployed between 2014 and 2026 into the 1990s
+  [PASS] M2-control  NC10_shuffled_deployment_dates_break_ordering true rho(catalog number, deployment date) = 1.0000; under a seeded permutation of the same dates it falls to 0.2364, so the agreement is carrying information rather than being an artefact of having eleven sorted rows
 
-checks 27/27  controls 9/9  VERDICT: PASS
+checks 31/31  controls 10/10  VERDICT: PASS
 report -> evidence/verification-report.json

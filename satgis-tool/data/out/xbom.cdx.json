@@ -1485,7 +1485,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c3899776fd3a4725ed23e60db81a6c627bd5afeb811ea0b52a4299bb4378ff3"
+          "content": "d1464a616a2847fd98816780217762d2963e06563c1ffdc81f6c58f626857484"
         }
       ],
       "name": "latam-history-metadata.json",
@@ -1496,7 +1496,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "2747"
+          "value": "3831"
         },
         {
           "name": "satgis:features",
@@ -1510,7 +1510,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2d23accaf0b167bfffc7a92e288d34a6551219649ec302abb0e5c9814d3af68"
+          "content": "857a17ac966ecb83f5a61f9a67fb5c72792051ab68b50eefd428936835db6850"
         }
       ],
       "name": "latam_imaging_current.geojson",
@@ -1521,7 +1521,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "107149"
+          "value": "117370"
         },
         {
           "name": "satgis:features",
@@ -1535,7 +1535,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dadba52b2957f5ad5f5c69bfd61f948026fd6e791620c3d61810d3d4d2760b67"
+          "content": "44624820cc8cbd0ae0d9e96a0130ae5e45d6ec5804e1e37b64139a49ba7dc5c2"
         }
       ],
       "name": "latam_imaging_current.parquet",
@@ -1546,7 +1546,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "59082"
+          "value": "63203"
         },
         {
           "name": "satgis:features",
@@ -1560,7 +1560,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e20f1439305e0f17c34a39fecde9e7aa6a051e1a8cf9b5fc8a1da991b425a707"
+          "content": "362fb17cc3977e7f76b6eb0fb1f55b3d71a558b01afc3c3c7b20b2475b0b300a"
         }
       ],
       "name": "latam_imaging_history.parquet",
@@ -1571,7 +1571,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "25813"
+          "value": "31153"
         },
         {
           "name": "satgis:features",
@@ -1660,7 +1660,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8a2dd5a83aaec3c6994691e408112aa3ac61fdb971d499810d3d9202a2e859a"
+          "content": "4feedc48cbaf8b4cf75975727f319de20b497605490876c66c26fc7fcb2c49cd"
         }
       ],
       "name": "satgis_orbital_catalog.gpkg",
@@ -1671,7 +1671,7 @@
         },
         {
           "name": "satgis:bytes",
-          "value": "53112832"
+          "value": "53116928"
         },
         {
           "name": "satgis:features",
@@ -1765,7 +1765,7 @@
         "value": "false"
       }
     ],
-    "timestamp": "2026-07-26T06:03:11+00:00",
+    "timestamp": "2026-07-26T23:22:04+00:00",
     "tools": {
       "components": [
         {

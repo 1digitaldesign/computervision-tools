@@ -502,3 +502,76 @@ Gunter's Space Page as a secondary source, marked as such.
 |---|---|---|---|
 | `latam_imaging_history` | Parquet | 147 | every LATAM payload ever catalogued, with imaging class, sensor, resolution, source, confidence, ISS-date and joint-code flags |
 | `latam_imaging_current` | GPKG + GeoJSON + Parquet | 57 | the on-orbit subset joined to current propagated positions |
+
+## Closing the last hole: the eleven inherited dates
+
+The first pass flagged 11 payloads whose catalog date is the ISS's own and left
+them out of first-record ranking, which meant five countries had no date-reliable
+entry. All eleven are now resolved to **sourced free-flight dates**, and the
+timeline ranks on a new `effective_date` field — the sourced deployment date
+where the catalog carries the station's, the catalog's own launch date otherwise.
+**0 of 147 payloads now lack a usable date.**
+
+| NORAD | Payload | Country | Catalog says | Actually deployed |
+|---|---|---|---|---|
+| 39571 | UAPSAT 1 | Peru | 1998-11-20 | **2014-02-28** |
+| 40117 | Chasqui-1 | Peru | 1998-11-20 | **2014-08-18** |
+| 40389 | AESP-14 | Brazil | 1998-11-20 | **2015-02-05** |
+| 40897 | SERPENS | Brazil | 1998-11-20 | **2015-09-17** |
+| 41931 | Tancredo-1 | Brazil | 1998-11-20 | **2017-01-19** |
+| 43468 | BATSU-CS1 / Irazú | Costa Rica | 1998-11-20 | **2018-05-11** |
+| 45261 | AztechSat-1 | Mexico | 1998-11-20 | **2020-02-19** |
+| 45598 | Quetzal-1 | Guatemala | 1998-11-20 | **2020-04-28** |
+| 47931 | GuaraníSat-1 | Paraguay | 1998-11-20 | **2021-03-14** |
+| 55129 | SPORT | Brazil | 1998-11-20 | **2022-12-29** |
+| 67685 | Gxiba-1 | Mexico | 1998-11-20 | **2026-02-03** |
+
+**Tancredo-1 forces a distinction worth encoding.** It left the ISS on
+2017-01-16 stowed inside **TuPOD**, a 3D-printed dispenser — but it was not a
+free-flying object until TuPOD released it on **2017-01-19, ~23:30 UTC**. Using
+the ejection date would bury a silent three-day error. Two conflicting sources
+were rejected with reasons: ARRL's 2016-12-19/21 are pre-slip *planned* dates in
+an article predating the event, and Gunter's "20 January 2016" is a typo'd year
+plus a JST rendering of the 19 Jan 23:30 UTC release. Tancredo-1 and OSNSAT were
+also the first TubeSats ever deployed in space, from the first 3D-printed
+orbital dispenser.
+
+Quetzal-1 carries a timezone trap of the same kind: JAXA's own release says
+"April 29th, 2020 (Japan time)", which is **April 28 UTC**.
+
+### The dates are corroborated by a signal independent of the sources
+
+NORAD catalog numbers are assigned roughly in the order objects enter the
+catalog, which for ISS-deployed CubeSats tracks deployment. That ordering is
+produced by USSF cataloguing and is entirely independent of the JAXA, NASA and
+AMSAT releases the dates came from. Agreement is therefore corroboration, not a
+restatement:
+
+**Spearman rho(NORAD catalog number, sourced deployment date) = 1.0000** across
+all eleven. Negative control **NC10** shows the number is carrying information —
+under a seeded permutation of the same eleven dates it collapses to 0.2364.
+
+### First imaging satellite by country — complete
+
+Now ranked on `effective_date`, covering **12 of 14** country codes.
+
+| Date | Country | Satellite | Class | Basis |
+|---|---|---|---|---|
+| 1996-08-29 | Argentina | µSAT-1 / Víctor | yes | catalog |
+| 1998-07-10 | Chile | FASat-Bravo | yes | catalog |
+| 1999-10-14 | Brazil / joint | CBERS-1 | yes | catalog |
+| 2012-09-29 | Venezuela | VRSS-1 | yes | catalog |
+| 2013-04-26 | Ecuador | NEE-01 Pegaso | partial | catalog |
+| 2013-11-21 | Peru | PUCP-SAT 1 | partial | catalog |
+| 2014-06-19 | Uruguay | AntelSat | yes | catalog |
+| 2018-11-29 | Colombia | FACSAT-1 | yes | catalog |
+| 2019-06-29 | Mexico | Painani-1 | yes | catalog |
+| **2020-04-28** | **Guatemala** | **Quetzal-1** | yes | **ISS deployment** |
+| **2021-03-14** | **Paraguay** | **GuaraníSat-1** | partial | **ISS deployment** |
+
+The two remaining country codes are correct as absences: **Bolivia and Costa
+Rica have never flown an imaging payload.** Note also that Peru's first record
+is unchanged — with real dates, Chasqui-1 lands at 2014-08-18, *after*
+PUCP-SAT 1, rather than being wrongly promoted to 1998.
+
+Verification across all layers is now **31/31 checks, 10/10 negative controls**.

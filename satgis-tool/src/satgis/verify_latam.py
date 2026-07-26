@@ -55,13 +55,13 @@ def m2_history_chronology(out_dir: Path) -> list[dict]:
     df = pd.read_parquet(out_dir / "latam_imaging_history.parquet")
     meta = json.loads((out_dir / "latam-history-metadata.json").read_text())
 
-    strict = df[(df["imaging"] == "yes") & (df["launch_date_reliable"])]
-    earliest = strict.sort_values("launch_date").iloc[0]
+    strict = df[(df["imaging"] == "yes") & (df["effective_date_known"])]
+    earliest = strict.sort_values("effective_date").iloc[0]
     ok = int(earliest["norad_cat_id"]) == 24291
     checks.append(_result("earliest_imager_is_musat1", "M2", ok,
                           f"earliest date-reliable imaging payload is "
                           f"{earliest['object_name']} ({int(earliest['norad_cat_id'])}, "
-                          f"{earliest['launch_date']}, {earliest['country']}) — "
+                          f"{earliest['effective_date']}, {earliest['country']}) — "
                           f"catalogued only as the generic string 'MICROSAT', which is "
                           f"why name-based lookups miss it"))
 
@@ -81,11 +81,54 @@ def m2_history_chronology(out_dir: Path) -> list[dict]:
 
     fb = meta["summary"]["first_imaging_by_country"]
     monotone = all(
-        df[df["norad_cat_id"] == f["norad_cat_id"]]["launch_date"].iloc[0] == f["launch_date"]
+        df[df["norad_cat_id"] == f["norad_cat_id"]]["effective_date"].iloc[0] == f["effective_date"]
         for f in fb.values())
     checks.append(_result("first_by_country_consistent", "M2", monotone,
                           f"first-imaging record for each of {len(fb)} countries "
                           f"re-reads identically from the row table"))
+    return checks
+
+
+def m3_deployment_dates(out_dir: Path) -> list[dict]:
+    """Validate the sourced ISS free-flight dates against an independent signal.
+
+    NORAD catalog numbers are assigned in roughly the order objects enter the
+    catalog, which for ISS-deployed CubeSats tracks deployment. That ordering is
+    produced by USSF cataloguing and is entirely independent of the agency press
+    releases the dates were sourced from, so agreement between the two is real
+    corroboration rather than a restatement.
+    """
+    import numpy as np
+    checks = []
+    df = pd.read_parquet(out_dir / "latam_imaging_history.parquet")
+    iss = df[df["iss_deployed"]].copy()
+
+    missing = int(iss["deployment_date"].isna().sum())
+    nosrc = int(iss["deployment_source"].isna().sum())
+    checks.append(_result("iss_deployment_dates_resolved", "M1",
+                          missing == 0 and nosrc == 0,
+                          f"{len(iss)} ISS-deployed payloads: {len(iss)-missing} have a "
+                          f"sourced free-flight date, {nosrc} lack a source URL"))
+
+    after = bool((iss["deployment_date"] > "1998-11-20").all())
+    checks.append(_result("deployment_after_station_launch", "M2", after,
+                          f"every deployment date postdates Zarya (1998-11-20); "
+                          f"range {iss['deployment_date'].min()} to "
+                          f"{iss['deployment_date'].max()}"))
+
+    iss = iss.sort_values("norad_cat_id")
+    rho = float(np.corrcoef(iss["norad_cat_id"].rank(),
+                            iss["deployment_date"].rank())[0, 1])
+    checks.append(_result("deployment_order_matches_catalog_order", "M2", rho > 0.95,
+                          f"Spearman rho(NORAD catalog number, sourced deployment date) "
+                          f"= {rho:.4f} over {len(iss)} ISS-deployed payloads — the "
+                          f"USSF cataloguing order independently corroborates dates taken "
+                          f"from JAXA/NASA/AMSAT releases", spearman_rho=rho))
+
+    unresolved = int((~df["effective_date_known"]).sum())
+    checks.append(_result("all_effective_dates_known", "M1", unresolved == 0,
+                          f"{unresolved} of {len(df)} payloads lack a usable date; every "
+                          f"object can be placed on the timeline"))
     return checks
 
 
@@ -137,11 +180,29 @@ def history_negative_controls(out_dir: Path, raw_dir: Path) -> list[dict]:
                             f"({', '.join(sorted(ghosts))}) to 1998-11-20, ahead of "
                             f"CBERS-1 (1999-10-14) — inserting spacecraft deployed "
                             f"between 2014 and 2026 into the 1990s"))
+    # NC10: shuffle the sourced deployment dates -> the independent
+    # catalog-order corroboration must collapse.
+    import numpy as np
+    df = pd.read_parquet(out_dir / "latam_imaging_history.parquet")
+    iss = df[df["iss_deployed"]].sort_values("norad_cat_id")
+    rng = np.random.default_rng(20260726)
+    shuffled = rng.permutation(iss["deployment_date"].to_numpy())
+    rho_s = abs(float(np.corrcoef(np.arange(len(iss)),
+                                  pd.Series(shuffled).rank())[0, 1]))
+    rho_t = abs(float(np.corrcoef(iss["norad_cat_id"].rank(),
+                                  iss["deployment_date"].rank())[0, 1]))
+    controls.append(_result("NC10_shuffled_deployment_dates_break_ordering",
+                            "M2-control", rho_s < 0.6 and rho_t > 0.95,
+                            f"true rho(catalog number, deployment date) = {rho_t:.4f}; "
+                            f"under a seeded permutation of the same dates it falls to "
+                            f"{rho_s:.4f}, so the agreement is carrying information rather "
+                            f"than being an artefact of having eleven sorted rows"))
     return controls
 
 
 def verify_latam_all(out_dir: Path, raw_dir: Path) -> dict:
     return {
-        "checks": m1_history_integrity(out_dir) + m2_history_chronology(out_dir),
+        "checks": (m1_history_integrity(out_dir) + m2_history_chronology(out_dir)
+                   + m3_deployment_dates(out_dir)),
         "negative_controls": history_negative_controls(out_dir, raw_dir),
     }

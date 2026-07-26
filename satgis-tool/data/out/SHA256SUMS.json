@@ -122,28 +122,28 @@
       "sha256": "1d4f9e7289966e4aee419ffaf924855d4f2ce2c4039f4f09271534acb3e13a87"
     },
     {
-      "bytes": 2747,
+      "bytes": 3831,
       "format": "JSON",
       "path": "latam-history-metadata.json",
-      "sha256": "7c3899776fd3a4725ed23e60db81a6c627bd5afeb811ea0b52a4299bb4378ff3"
+      "sha256": "d1464a616a2847fd98816780217762d2963e06563c1ffdc81f6c58f626857484"
     },
     {
-      "bytes": 107149,
+      "bytes": 117370,
       "format": "GeoJSON",
       "path": "latam_imaging_current.geojson",
-      "sha256": "e2d23accaf0b167bfffc7a92e288d34a6551219649ec302abb0e5c9814d3af68"
+      "sha256": "857a17ac966ecb83f5a61f9a67fb5c72792051ab68b50eefd428936835db6850"
     },
     {
-      "bytes": 59082,
+      "bytes": 63203,
       "format": "GeoParquet",
       "path": "latam_imaging_current.parquet",
-      "sha256": "dadba52b2957f5ad5f5c69bfd61f948026fd6e791620c3d61810d3d4d2760b67"
+      "sha256": "44624820cc8cbd0ae0d9e96a0130ae5e45d6ec5804e1e37b64139a49ba7dc5c2"
     },
     {
-      "bytes": 25813,
+      "bytes": 31153,
       "format": "GeoParquet",
       "path": "latam_imaging_history.parquet",
-      "sha256": "e20f1439305e0f17c34a39fecde9e7aa6a051e1a8cf9b5fc8a1da991b425a707"
+      "sha256": "362fb17cc3977e7f76b6eb0fb1f55b3d71a558b01afc3c3c7b20b2475b0b300a"
     },
     {
       "bytes": 473206,
@@ -164,10 +164,10 @@
       "sha256": "3beba65366107daa5c11780bee7a690ab0a5d8e093f8aa582728981b0664313e"
     },
     {
-      "bytes": 53112832,
+      "bytes": 53116928,
       "format": "OGC GeoPackage",
       "path": "satgis_orbital_catalog.gpkg",
-      "sha256": "d8a2dd5a83aaec3c6994691e408112aa3ac61fdb971d499810d3d9202a2e859a"
+      "sha256": "4feedc48cbaf8b4cf75975727f319de20b497605490876c66c26fc7fcb2c49cd"
     },
     {
       "bytes": 486361,
@@ -182,7 +182,7 @@
       "sha256": "c8ac0ea4c0035ebef8dfc24dbd0f1d2f2c667b4a031293c74a473ceeda7bf145"
     }
   ],
-  "generated_utc": "2026-07-26T06:03:11+00:00",
+  "generated_utc": "2026-07-26T23:22:04+00:00",
   "schema": "satgis.output-manifest/2",
-  "total_bytes": 380513913
+  "total_bytes": 380538775
 }
