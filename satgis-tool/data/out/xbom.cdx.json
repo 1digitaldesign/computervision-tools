@@ -1067,7 +1067,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6c16fa4b0a1cb681a86c9e1387accf229a03c0f0538298a3e511700008bf7a91"
+          "content": "35c4f4ddc1a447044188d5d119845326ee351c152eab2a662d964a0e6a15f616"
         }
       ],
       "name": "build-metadata.json",
@@ -1242,7 +1242,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c26bb8b87ab8ccf9b32a23cdadb6f7ba55169ae36d750a63e4d4ec4c19a91cbc"
+          "content": "cb31b0ee45ce05ab728b18517fba1fd112bd24549308cb4eacd1dc46b64b38f5"
         }
       ],
       "name": "satgis_orbital_catalog.gpkg",
@@ -1297,7 +1297,7 @@
         "value": "false"
       }
     ],
-    "timestamp": "2026-07-26T04:46:18+00:00",
+    "timestamp": "2026-07-26T04:52:44+00:00",
     "tools": {
       "components": [
         {

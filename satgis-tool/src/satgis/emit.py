@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -45,6 +46,21 @@ def emit(built: dict, out_dir: Path) -> dict:
     artifacts: list[dict] = []
 
     # --- GeoPackage: the canonical multi-layer container --------------------
+    # A GeoPackage is a SQLite database, and GDAL stamps wall-clock into
+    # gpkg_contents.last_change. That alone made two builds from the same
+    # frozen snapshot differ byte-for-byte while every layer was proven
+    # feature-identical. Pinning OGR_CURRENT_DATE to the propagation epoch
+    # removes the only nondeterministic field, so the container hashes
+    # reproducibly like the Parquet and GeoJSON outputs already did.
+    epoch_iso = built["metadata"]["propagation_epoch_utc"]
+    stamp = epoch_iso.replace("+00:00", "").rstrip("Z") + ".000Z"
+    os.environ["OGR_CURRENT_DATE"] = stamp
+    try:
+        import pyogrio
+        pyogrio.set_gdal_config_options({"OGR_CURRENT_DATE": stamp})
+    except Exception:  # noqa: BLE001 — env var alone is sufficient for GDAL
+        pass
+
     gpkg = out_dir / "satgis_orbital_catalog.gpkg"
     if gpkg.exists():
         gpkg.unlink()
