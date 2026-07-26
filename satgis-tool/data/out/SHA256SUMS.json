@@ -1,0 +1,188 @@
+{
+  "artifact_count": 30,
+  "artifacts": [
+    {
+      "bytes": 5523,
+      "format": "JSON",
+      "path": "access-metadata.json",
+      "sha256": "4b8483c61fb217f09d4fcedb57efce63e835829446d58b64c2fff42a46b99ebb"
+    },
+    {
+      "bytes": 13107423,
+      "format": "GeoParquet",
+      "path": "access_epoch.parquet",
+      "sha256": "060ef34c85a80946c9912472f5379a817086adb9d91ef527d523d28654d7ed29"
+    },
+    {
+      "bytes": 143060900,
+      "format": "GeoParquet",
+      "path": "access_windows.parquet",
+      "sha256": "54a701762ff99ae143d64bb5116a8922f034ca9659492f3b295c33fb3a2bd334"
+    },
+    {
+      "bytes": 19000,
+      "format": "JSON",
+      "path": "agency-crosswalk.json",
+      "sha256": "be218a0142e141563f0c808a22aea0eb5610f02ab685d04c0fe0e8c0aacf5b6b"
+    },
+    {
+      "bytes": 154051,
+      "format": "GeoJSON",
+      "path": "agency_nasa_footprints.geojson",
+      "sha256": "1f8b56dc82cef32c3ea97ad95c3331049552546bb4ca1a360b74366a8c0d5e9e"
+    },
+    {
+      "bytes": 126639,
+      "format": "GeoJSON",
+      "path": "agency_nasa_ground_tracks.geojson",
+      "sha256": "d8393f76392c6fa8b26b5c007dee13630b09eef044d57e4797fc3b3bc83d94fc"
+    },
+    {
+      "bytes": 55176,
+      "format": "GeoJSON",
+      "path": "agency_nasa_satellites.geojson",
+      "sha256": "e5720fdfb510bb5fa9ff41b5ccbfc532a7004b80a568f78a767ec59a3d70bb64"
+    },
+    {
+      "bytes": 48308,
+      "format": "GeoJSON",
+      "path": "agency_noaa_footprints.geojson",
+      "sha256": "a3a1c89b3997af5f73e72a65018cdbd812351e087d20df741140c7d21fa0ecc4"
+    },
+    {
+      "bytes": 38877,
+      "format": "GeoJSON",
+      "path": "agency_noaa_ground_tracks.geojson",
+      "sha256": "0716110f1083a9df08566f7280989c9cf17159288e822e985c57852b63908844"
+    },
+    {
+      "bytes": 17850,
+      "format": "GeoJSON",
+      "path": "agency_noaa_satellites.geojson",
+      "sha256": "a9ec7d1fc1e89921e0e01a8cbe3df793777856c7716b0a1fac4f2e4c9a1cb56a"
+    },
+    {
+      "bytes": 7459,
+      "format": "GeoJSON",
+      "path": "agency_usgs_footprints.geojson",
+      "sha256": "5943bdef1da06b524fb7b9e5031a0f9fef214c248b30ee362c5ad2df04da08df"
+    },
+    {
+      "bytes": 6273,
+      "format": "GeoJSON",
+      "path": "agency_usgs_ground_tracks.geojson",
+      "sha256": "dd737435a06a91da7e6a2b5964399105bebcf9b2a5813fb872c30a24a97bd779"
+    },
+    {
+      "bytes": 2878,
+      "format": "GeoJSON",
+      "path": "agency_usgs_satellites.geojson",
+      "sha256": "c743a31264688bc88fa15c40efcee7a52d4dfd8bf64060d2722755f7ce76ad78"
+    },
+    {
+      "bytes": 13335,
+      "format": "JSON",
+      "path": "build-metadata.json",
+      "sha256": "35c4f4ddc1a447044188d5d119845326ee351c152eab2a662d964a0e6a15f616"
+    },
+    {
+      "bytes": 59580679,
+      "format": "GeoJSON",
+      "path": "footprints.geojson",
+      "sha256": "1dad238440d388521d80aaa166541ff3c2c3afa28a781623236d5a5c75f024a2"
+    },
+    {
+      "bytes": 19475100,
+      "format": "GeoParquet",
+      "path": "footprints.parquet",
+      "sha256": "4c9e4146dd8e8bed7b536a8e42c4213a54bd5e7673e8e744005985b112d5774c"
+    },
+    {
+      "bytes": 295490,
+      "format": "GeoJSON",
+      "path": "ground_stations.geojson",
+      "sha256": "740ec8c060cb6d361ee06b7f3e9617501333b954d0f5277c00578f42c364beca"
+    },
+    {
+      "bytes": 53618,
+      "format": "GeoParquet",
+      "path": "ground_stations.parquet",
+      "sha256": "f9fc4089c50573cc515f88895def06f2223b15466f3c304906652d77408992b7"
+    },
+    {
+      "bytes": 49246698,
+      "format": "GeoJSON",
+      "path": "ground_tracks.geojson",
+      "sha256": "204d6a74a9b78ad4659bb531fc27a11aaf5d42af9d0aa5f06c477094e58bfd33"
+    },
+    {
+      "bytes": 16886646,
+      "format": "GeoParquet",
+      "path": "ground_tracks.parquet",
+      "sha256": "1d4f9e7289966e4aee419ffaf924855d4f2ce2c4039f4f09271534acb3e13a87"
+    },
+    {
+      "bytes": 3831,
+      "format": "JSON",
+      "path": "latam-history-metadata.json",
+      "sha256": "d1464a616a2847fd98816780217762d2963e06563c1ffdc81f6c58f626857484"
+    },
+    {
+      "bytes": 117370,
+      "format": "GeoJSON",
+      "path": "latam_imaging_current.geojson",
+      "sha256": "857a17ac966ecb83f5a61f9a67fb5c72792051ab68b50eefd428936835db6850"
+    },
+    {
+      "bytes": 63203,
+      "format": "GeoParquet",
+      "path": "latam_imaging_current.parquet",
+      "sha256": "44624820cc8cbd0ae0d9e96a0130ae5e45d6ec5804e1e37b64139a49ba7dc5c2"
+    },
+    {
+      "bytes": 31153,
+      "format": "GeoParquet",
+      "path": "latam_imaging_history.parquet",
+      "sha256": "362fb17cc3977e7f76b6eb0fb1f55b3d71a558b01afc3c3c7b20b2475b0b300a"
+    },
+    {
+      "bytes": 473206,
+      "format": "GeoParquet",
+      "path": "satellite_access_summary.parquet",
+      "sha256": "c5ef12f9bdf6c0613d4ff3f6a64438b06f5225d35294e5aa37cc5c7239e0ae1c"
+    },
+    {
+      "bytes": 20652228,
+      "format": "GeoJSON",
+      "path": "satellites.geojson",
+      "sha256": "e01b8033bba1ba02589cdb115cc3cc99c7ab790f3e3b3d3a01e10b68c2732318"
+    },
+    {
+      "bytes": 3317650,
+      "format": "GeoParquet",
+      "path": "satellites.parquet",
+      "sha256": "3beba65366107daa5c11780bee7a690ab0a5d8e093f8aa582728981b0664313e"
+    },
+    {
+      "bytes": 53116928,
+      "format": "OGC GeoPackage",
+      "path": "satgis_orbital_catalog.gpkg",
+      "sha256": "4feedc48cbaf8b4cf75975727f319de20b497605490876c66c26fc7fcb2c49cd"
+    },
+    {
+      "bytes": 486361,
+      "format": "GeoJSON",
+      "path": "station_access_summary.geojson",
+      "sha256": "2432b7196f34ab318058800e5e05c24173259f77547a072676550a4af85aa656"
+    },
+    {
+      "bytes": 74922,
+      "format": "GeoParquet",
+      "path": "station_access_summary.parquet",
+      "sha256": "c8ac0ea4c0035ebef8dfc24dbd0f1d2f2c667b4a031293c74a473ceeda7bf145"
+    }
+  ],
+  "generated_utc": "2026-07-26T23:22:04+00:00",
+  "schema": "satgis.output-manifest/2",
+  "total_bytes": 380538775
+}

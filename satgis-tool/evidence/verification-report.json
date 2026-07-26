@@ -1,0 +1,284 @@
+{
+  "checks": [
+    {
+      "artifacts": 30,
+      "check": "artifact_sha256",
+      "detail": "30 artifacts verified",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "gpkg_schema_and_counts",
+      "detail": "3 layers: counts, CRS, validity all conform",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "required_columns",
+      "detail": "all required columns present",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "proj_vs_bowring_datum",
+      "detail": "max dlat=2.132e-14 deg, dlon=2.842e-14 deg, dalt=2.980e-08 m",
+      "max_dalt_m": 2.9802322387695312e-08,
+      "max_dlat_deg": 2.1316282072803006e-14,
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "alt_km": 426.88230154327397,
+      "check": "reference_iss_25544",
+      "detail": "alt=426.9 km (expect 330-470), speed=7.657 km/s (expect 7.5-7.9)",
+      "method": "M2",
+      "passed": true,
+      "speed_km_s": 7.65747199704839
+    },
+    {
+      "check": "reference_goes_geostationary",
+      "detail": "n=4 alt=35786-35789 km, |lat|max=0.446 deg, v=3.075-3.075 km/s",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "agreement_fraction": 1.0,
+      "check": "kepler_third_law",
+      "detail": "100.00% of 16241 objects agree with T=2*pi*sqrt(a^3/mu) within 2%",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "subsatellite_point_in_footprint",
+      "detail": "16241/16241 (100.000%) footprints contain their own subsatellite point",
+      "fraction": 1.0,
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "world_bounds",
+      "detail": "footprint bounds [np.float64(-180.0), np.float64(-90.0), np.float64(180.0), np.float64(90.0)] within EPSG:4326 domain",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "cap_radius_monotone_in_altitude",
+      "detail": "Spearman rho(alt_km, radius_km) = 1.000000000 (expect ~1.0)",
+      "method": "M3",
+      "passed": true,
+      "spearman_rho": 1.0
+    },
+    {
+      "check": "ground_tracks_non_empty",
+      "detail": "16241 tracks, 0 empty",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "access_gpkg_layers",
+      "detail": "ground_stations + station_access_summary conform",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "access_window_bounds",
+      "detail": "7,685,471 pairs: minutes in [0, 1440], max elevation in [5, 90]",
+      "method": "M1",
+      "pairs": 7685471,
+      "passed": true
+    },
+    {
+      "check": "crosslayer_footprint_vs_elevation",
+      "detail": "4998/5000 (99.960%) of sampled elev>=0 pairs place the station inside that satellite's independently-derived footprint cap",
+      "fraction": 0.9996,
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "by_class": {
+        "GEO": 192,
+        "HEO": 3,
+        "MEO": 9
+      },
+      "check": "never_visible_are_not_leo",
+      "detail": "204 satellites never rise above the mask in 24 h; {'GEO': 192, 'MEO': 9, 'HEO': 3} \u2014 zero are LEO, as required: a LEO object's ground track sweeps all longitudes within 24 h, so it cannot hide from 484 stations, whereas a GEO object parked over a non-visible longitude never rises.",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "bands_monotone": true,
+      "check": "passes_rise_with_latitude",
+      "detail": "Spearman rho(|latitude|, passes) = 0.8772 over 484 stations; 10-degree latitude bands give strictly increasing mean pass counts (56,983, 61,400, 70,929, 84,550, 86,666) \u2014 polar and sun-synchronous orbits converge toward the poles",
+      "method": "M2",
+      "passed": true,
+      "spearman_rho": 0.8771791884882899
+    },
+    {
+      "check": "gemm_precision_bound",
+      "detail": "float32 vs float64 elevation: p99 3.97e-05 deg, mean 6.26e-06 deg over 7,860,644 pairs",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "agreement": 1.0,
+      "check": "station_country_assignment",
+      "detail": "458 strictly-contained stations, 100.000% re-derive the same ISO code on an independent spatial join",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "region_scope",
+      "detail": "every station is Spain or Latin America; countries=18, stations=484",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "history_row_count",
+      "detail": "147 payload rows, metadata says 147",
+      "method": "M1",
+      "passed": true,
+      "rows": 147
+    },
+    {
+      "check": "no_unclassified_payloads",
+      "detail": "0 payloads left unclassified \u2014 every object is explicitly yes/partial/no with a source, rather than defaulting to non-imaging",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "crosswalk_ids_resolve",
+      "crosswalk_entries": 95,
+      "detail": "all 95 researched NORAD IDs resolve to a real LATAM payload in the frozen SATCAT",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "imaging_claims_are_sourced",
+      "detail": "93 imaging claims, 0 without an evidence URL",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "earliest_imager_is_musat1",
+      "detail": "earliest date-reliable imaging payload is MICROSAT (24291, 1996-08-29, Argentina) \u2014 catalogued only as the generic string 'MICROSAT', which is why name-based lookups miss it",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "cbers_line_present",
+      "detail": "5 CBERS objects retained under the joint China/Brazil owner code CHBZ (CBERS 1 (ZY 1A), CBERS 2 (ZY 1B), CBERS 2B, CBERS 4, CBERS 4A)",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "iss_dates_flagged",
+      "detail": "11 ISS-deployed payloads carry COSPAR 1998-067 and are all flagged launch_date_reliable=False, so none can contaminate a first-record ranking",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "first_by_country_consistent",
+      "detail": "first-imaging record for each of 12 countries re-reads identically from the row table",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "iss_deployment_dates_resolved",
+      "detail": "11 ISS-deployed payloads: 11 have a sourced free-flight date, 0 lack a source URL",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "deployment_after_station_launch",
+      "detail": "every deployment date postdates Zarya (1998-11-20); range 2014-02-28 to 2026-02-03",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "deployment_order_matches_catalog_order",
+      "detail": "Spearman rho(NORAD catalog number, sourced deployment date) = 1.0000 over 11 ISS-deployed payloads \u2014 the USSF cataloguing order independently corroborates dates taken from JAXA/NASA/AMSAT releases",
+      "method": "M2",
+      "passed": true,
+      "spearman_rho": 1.0
+    },
+    {
+      "check": "all_effective_dates_known",
+      "detail": "0 of 147 payloads lack a usable date; every object can be placed on the timeline",
+      "method": "M1",
+      "passed": true
+    }
+  ],
+  "checks_passed": 31,
+  "checks_total": 31,
+  "controls_passed": 10,
+  "controls_total": 10,
+  "methods": {
+    "M1": "integrity/CRC/schema",
+    "M2": "independent physics",
+    "M3": "geometric invariants"
+  },
+  "negative_controls": [
+    {
+      "check": "NC1_bitflip_detected",
+      "detail": "single-byte flip in access_epoch.parquet detected; original restored",
+      "method": "M1-control",
+      "passed": true
+    },
+    {
+      "check": "NC2_antipodal_point_rejected",
+      "detail": "0 expected; 0/2000 antipodal points fell inside their own cap. Max central angle over the whole catalog is 87.340 deg (< 90 deg), so the antipode is provably exterior for every object.",
+      "method": "M3-control",
+      "passed": true
+    },
+    {
+      "check": "NC3_shuffled_altitude_breaks_monotonicity",
+      "detail": "Spearman rho collapses to 0.000348 under a seeded altitude permutation (expect ~0)",
+      "method": "M3-control",
+      "passed": true
+    },
+    {
+      "check": "NC4_datum_perturbation_detected",
+      "detail": "a 25 km Z-axis injection moves max dlat to 0.216397 deg, far above the 1e-8 deg pass threshold",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC5_station_longitude_shift_rejected",
+      "detail": "after a +90 deg longitude shift only 456/3000 (15.2%) stations remain inside the cap that contained them",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC6_mask_monotonicity_in_time",
+      "detail": "raising the mask cannot add access time: minutes(5)<=minutes(0) violated 0 times, minutes(10)<=minutes(5) violated 0 times, across 7,685,471 pairs. Pass *count* is deliberately not asserted monotone \u2014 2,798 pairs (0.0364%, all MEO/GEO/HEO) legitimately split one lower-mask contact into several higher-mask contacts.",
+      "method": "M1-control",
+      "passed": true
+    },
+    {
+      "check": "NC7_mismatched_satellite_rejected",
+      "detail": "randomly re-pairing stations with the wrong satellite drops containment to 5.8% (from 100.0% for true pairs), so the cross-layer check is sensitive to identity, not just geometry",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC8_joint_owner_code_matters",
+      "detail": "removing owner code CHBZ deletes 5 payloads and the entire CBERS line disappears \u2014 a national-code-only filter would silently drop the backbone of Brazilian Earth observation",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC9_iss_inherited_date_matters",
+      "detail": "ranking on the raw LAUNCH_DATE field flips the first-imager for ['Brazil', 'Mexico', 'Peru'] and floats 4 ISS-deployed CubeSats (CHASQUI-1, GUARANISAT-1, GXIBA-1, QUETZAL-1) to 1998-11-20, ahead of CBERS-1 (1999-10-14) \u2014 inserting spacecraft deployed between 2014 and 2026 into the 1990s",
+      "method": "M2-control",
+      "passed": true
+    },
+    {
+      "check": "NC10_shuffled_deployment_dates_break_ordering",
+      "detail": "true rho(catalog number, deployment date) = 1.0000; under a seeded permutation of the same dates it falls to 0.2364, so the agreement is carrying information rather than being an artefact of having eleven sorted rows",
+      "method": "M2-control",
+      "passed": true
+    }
+  ],
+  "schema": "satgis.verification-report/1",
+  "verdict": "PASS"
+}

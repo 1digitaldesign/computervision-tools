@@ -1,0 +1,17 @@
+stations in Spain + LATAM: 484
+float32 GEMM vs float64: max 7.58e-02 deg, p99 3.97e-05 deg
+epoch access pairs (elev >= 0 deg): 454,555
+window: 24.0 h, 1440 samples at 60 s, 16,241 satellites x 484 stations = 11.3G (sat,time,station) triples
+     100/16,241 satellites     1.1s  eta  171.9s
+   2,100/16,241 satellites    13.2s  eta   88.7s
+   4,100/16,241 satellites    25.3s  eta   74.8s
+   6,100/16,241 satellites    37.6s  eta   62.5s
+   8,100/16,241 satellites    50.0s  eta   50.2s
+  10,100/16,241 satellites    62.7s  eta   38.1s
+  12,100/16,241 satellites    75.4s  eta   25.8s
+  14,100/16,241 satellites    87.7s  eta   13.3s
+  16,100/16,241 satellites   100.2s  eta    0.9s
+window pass complete in 101.1s
+access-window pairs with >=1 contact in 24.0 h: 7,685,471
+TOTAL 102.9s
+ARTIFACTS WRITTEN

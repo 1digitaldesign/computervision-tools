@@ -1,0 +1,32 @@
+=== A. latitude vs passes: is the trend real on the FULL station set? ===
+ all 484 stations: Spearman rho = 0.8772
+            n  mean_passes
+band                      
+(0, 10]    64      56983.0
+(10, 20]   70      61400.0
+(20, 30]   77      70929.0
+(30, 40]  147      84550.0
+(40, 50]  126      86666.0
+
+ T1 only (12): latitude spread = 5.25..40.45
+   8 of them sit within 0.028 deg of each other (Madrid area), pass spread among those = 30 (0.0344% of total)
+
+=== B. who violates passes(10) <= passes(5)? ===
+ violating pairs: 2,798 / 7,685,471 = 0.0364%
+ by orbit class:
+orbit_class
+MEO    1093
+GEO    1081
+HEO     624
+
+ example violators:
+     object_name orbit_class  passes_5deg  passes_10deg  minutes_5deg  minutes_10deg
+PHASE 3B (AO-10)         HEO            2             3         617.0          404.0
+PHASE 3B (AO-10)         HEO            2             3         625.0          439.0
+PHASE 3B (AO-10)         HEO            2             3         625.0          439.0
+PHASE 3B (AO-10)         HEO            2             3         628.0          460.0
+PHASE 3B (AO-10)         HEO            2             3         617.0          406.0
+
+=== C. is MINUTES monotone in the mask (the invariant that should hold)? ===
+ minutes(5) > minutes(0): 0 violations
+ minutes(10) > minutes(5): 0 violations

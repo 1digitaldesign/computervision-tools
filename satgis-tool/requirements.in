@@ -1,0 +1,12 @@
+# satgis — orbital catalog → GIS compilation
+# Direct dependencies only; exact versions are pinned in requirements.txt (uv-compiled lock).
+sgp4
+numpy
+pandas
+pyarrow
+geopandas
+shapely
+pyproj
+pyogrio
+requests
+cyclonedx-python-lib

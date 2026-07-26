@@ -1,0 +1,1781 @@
+{
+  "bomFormat": "CycloneDX",
+  "components": [
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "name": "sgp4",
+      "purl": "pkg:pypi/sgp4@2.27",
+      "scope": "required",
+      "type": "library",
+      "version": "2.27"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause"
+          }
+        }
+      ],
+      "name": "geopandas",
+      "purl": "pkg:pypi/geopandas@1.1.4",
+      "scope": "required",
+      "type": "library",
+      "version": "1.1.4"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD 3-Clause"
+          }
+        }
+      ],
+      "name": "shapely",
+      "purl": "pkg:pypi/shapely@2.1.2",
+      "scope": "required",
+      "type": "library",
+      "version": "2.1.2"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "name": "pyproj",
+      "purl": "pkg:pypi/pyproj@3.7.2",
+      "scope": "required",
+      "type": "library",
+      "version": "3.7.2"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT License"
+          }
+        }
+      ],
+      "name": "pyogrio",
+      "purl": "pkg:pypi/pyogrio@0.13.0",
+      "scope": "required",
+      "type": "library",
+      "version": "0.13.0"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "pyarrow",
+      "purl": "pkg:pypi/pyarrow@25.0.0",
+      "scope": "required",
+      "type": "library",
+      "version": "25.0.0"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD License"
+          }
+        }
+      ],
+      "name": "pandas",
+      "purl": "pkg:pypi/pandas@3.0.5",
+      "scope": "required",
+      "type": "library",
+      "version": "3.0.5"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+          }
+        }
+      ],
+      "name": "numpy",
+      "purl": "pkg:pypi/numpy@2.5.1",
+      "scope": "required",
+      "type": "library",
+      "version": "2.5.1"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "requests",
+      "purl": "pkg:pypi/requests@2.34.2",
+      "scope": "required",
+      "type": "library",
+      "version": "2.34.2"
+    },
+    {
+      "licenses": [
+        {
+          "license": {
+            "name": "Apache-2.0"
+          }
+        }
+      ],
+      "name": "cyclonedx-python-lib",
+      "purl": "pkg:pypi/cyclonedx-python-lib@11.11.0",
+      "scope": "required",
+      "type": "library",
+      "version": "11.11.0"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'active'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=active&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "687c1f4655f945f054cca8a7ca6012caec2f63307067e815f1118bad5d76f0dd"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.active",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "16241"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "6840583"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T04:37:23+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T04:37:23+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'argos'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=argos&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd14b631d0e26205055d4b875ee619fbf1695e82b25b4f2f675753f1257f9d5d"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.argos",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "30"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "12513"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:27+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:27+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'dmc'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=dmc&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "899d31039dcac9c3ca4b896581d87f0cf64ef9a77f486cc56ac911aaafc881c0"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.dmc",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "9"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "3760"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:23+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:23+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'education'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=education&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f42a7966eec2fa0bcfc7808c584b3f0853ea5abbecabed0b14f8c0f8a99aa268"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.education",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "6"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "2514"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:36+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:36+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'engineering'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=engineering&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b055d0179645ee3567427cb023e599a472583a444c137b7ab9cc9245ec3f255a"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.engineering",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "37"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "15485"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:33+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:33+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'geodetic'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=geodetic&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dc5150fcbc8f4819d9224c9b45e06150bcd13efeccb9ce0f137a4c1aeab59fed"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.geodetic",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "10"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "4117"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:31+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:31+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'goes'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=goes&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "391ef4f81f89b0284bde128056b2de7976270566dd92042d6c409cdf414732d3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.goes",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "6"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "2402"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:16+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:16+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'planet'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=planet&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a54ef8b0d6534537d1b2c6dbacad3b93e1d80ed24735536393b5eeaf0b09d211"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.planet",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "123"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "51849"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:40+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:40+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'resource'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=resource&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93c35e3dbd6df4eb427830e2861e2d8ad62cee32594b13552fca55befb9d2360"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.resource",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "167"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "69802"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:18+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:18+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'sarsat'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=sarsat&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0fd33845c27b7e2f15da7fb2abb72a3a201a67db0c4fec554d4dd26142b1edf"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.sarsat",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "83"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "33979"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:21+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:21+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'science'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=science&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d704924b6d08aac85185643ba382bae13afe8caf853b6e76886126f9a3efc960"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.science",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "49"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "20367"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:29+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:29+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'spire'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=spire&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6cd7a1068734c3991c081b96269d92d669ba5ae906f4709098e140f4a486bc3"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.spire",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "73"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "31156"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:43+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:43+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'stations'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=stations&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "585462e9865537d0649d848a8e1c4323fc1315ee561149a5e1283289e1c1f30b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.stations",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "24"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "10107"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:38+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:38+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'tdrss'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=tdrss&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7798e8f2c5aedbc9f873bdd21f7592688d0ab8e3cb9618e11be2cfca22dd32b"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.tdrss",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "26"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "10592"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:25+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:25+00:00"
+    },
+    {
+      "description": "OMM/GP element sets for CelesTrak group 'weather'.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=weather&FORMAT=json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2dc5863e3ace9131b700c6851ce1d641206e5e76488d80dcd96b4761917c91c9"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.gp.weather",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "74"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "30649"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:14+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS orbital data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:14+00:00"
+    },
+    {
+      "description": "Full SATCAT: NORAD ID, COSPAR ID, object type, owner code, launch/decay dates, orbital regime.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://celestrak.org/pub/satcat.csv"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70145d6926ebd0ab84991edc76bd3f59f413ce46fa24af2be040af1e6bb3c8a5"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105) as redistributed by CelesTrak"
+          }
+        }
+      ],
+      "name": "celestrak.satcat",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "70122"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "6687904"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:10+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "CelesTrak (T.S. Kelso), redistributing USSF 18th/19th SDS catalog data"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:10+00:00"
+    },
+    {
+      "description": "SPICE topocentric frame kernel for the ESTRACK ground station network.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://spiftp.esac.esa.int/data/SPICE/JUICE/kernels/fk/estrack_v03.tf"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "07f955c5c25bc3df3604db0cb649724a33ca7e4136cd96f6f3bec53665dd1e32"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "ESA SPICE kernels, freely redistributable for scientific use"
+          }
+        }
+      ],
+      "name": "esa.estrack_v03",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "484"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "18194"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:45+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "European Space Agency / ESAC SPICE Service"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:45+00:00"
+    },
+    {
+      "description": "SPICE topocentric frame kernel for NASA Deep Space Network stations.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/stations/earth_topo_260717.tf"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2c6c91352936348546ad7b65a2779ece02bd7cf87f643c1aaa5df704dd24274c"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "US Government work (uncopyrightable, 17 U.S.C. \u00a7105)"
+          }
+        }
+      ],
+      "name": "nasa.naif.earth_topo_260717",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "2049"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "68595"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:48+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "NASA JPL / NAIF"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:48+00:00"
+    },
+    {
+      "description": "Admin-0 country polygons, used for geometric country assignment and the regional AOI.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_countries.zip"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5fed433373581fa648920435f937d95f2d3c0200e067409c6478dcdf1b853139"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "Public domain"
+          }
+        }
+      ],
+      "name": "naturalearth.admin0_50m",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "0"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "799734"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:53+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "Natural Earth (NACIS)"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:53+00:00"
+    },
+    {
+      "description": "Open ground-station registry: position, altitude, horizon mask, status.",
+      "externalReferences": [
+        {
+          "type": "distribution",
+          "url": "https://network.satnogs.org/api/stations/?format=json&page=1"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97ffe7f404fb4d79305653f036936e47700773c9295c35ca81a9bdeb909d3a37"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "name": "Open data, AGPL-3.0 platform; station data operator-reported"
+          }
+        }
+      ],
+      "name": "satnogs.stations",
+      "properties": [
+        {
+          "name": "satgis:records",
+          "value": "4383"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "2774346"
+        },
+        {
+          "name": "satgis:retrieved_utc",
+          "value": "2026-07-26T05:09:51+00:00"
+        }
+      ],
+      "supplier": {
+        "name": "SatNOGS Network (Libre Space Foundation)"
+      },
+      "type": "data",
+      "version": "2026-07-26T05:09:51+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4b8483c61fb217f09d4fcedb57efce63e835829446d58b64c2fff42a46b99ebb"
+        }
+      ],
+      "name": "access-metadata.json",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "JSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "5523"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "060ef34c85a80946c9912472f5379a817086adb9d91ef527d523d28654d7ed29"
+        }
+      ],
+      "name": "access_epoch.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "13107423"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "54a701762ff99ae143d64bb5116a8922f034ca9659492f3b295c33fb3a2bd334"
+        }
+      ],
+      "name": "access_windows.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "143060900"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "be218a0142e141563f0c808a22aea0eb5610f02ab685d04c0fe0e8c0aacf5b6b"
+        }
+      ],
+      "name": "agency-crosswalk.json",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "JSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "19000"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f8b56dc82cef32c3ea97ad95c3331049552546bb4ca1a360b74366a8c0d5e9e"
+        }
+      ],
+      "name": "agency_nasa_footprints.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "154051"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d8393f76392c6fa8b26b5c007dee13630b09eef044d57e4797fc3b3bc83d94fc"
+        }
+      ],
+      "name": "agency_nasa_ground_tracks.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "126639"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5720fdfb510bb5fa9ff41b5ccbfc532a7004b80a568f78a767ec59a3d70bb64"
+        }
+      ],
+      "name": "agency_nasa_satellites.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "55176"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a3a1c89b3997af5f73e72a65018cdbd812351e087d20df741140c7d21fa0ecc4"
+        }
+      ],
+      "name": "agency_noaa_footprints.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "48308"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0716110f1083a9df08566f7280989c9cf17159288e822e985c57852b63908844"
+        }
+      ],
+      "name": "agency_noaa_ground_tracks.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "38877"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9ec7d1fc1e89921e0e01a8cbe3df793777856c7716b0a1fac4f2e4c9a1cb56a"
+        }
+      ],
+      "name": "agency_noaa_satellites.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "17850"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5943bdef1da06b524fb7b9e5031a0f9fef214c248b30ee362c5ad2df04da08df"
+        }
+      ],
+      "name": "agency_usgs_footprints.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "7459"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd737435a06a91da7e6a2b5964399105bebcf9b2a5813fb872c30a24a97bd779"
+        }
+      ],
+      "name": "agency_usgs_ground_tracks.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "6273"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c743a31264688bc88fa15c40efcee7a52d4dfd8bf64060d2722755f7ce76ad78"
+        }
+      ],
+      "name": "agency_usgs_satellites.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "2878"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35c4f4ddc1a447044188d5d119845326ee351c152eab2a662d964a0e6a15f616"
+        }
+      ],
+      "name": "build-metadata.json",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "JSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "13335"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1dad238440d388521d80aaa166541ff3c2c3afa28a781623236d5a5c75f024a2"
+        }
+      ],
+      "name": "footprints.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "59580679"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c9e4146dd8e8bed7b536a8e42c4213a54bd5e7673e8e744005985b112d5774c"
+        }
+      ],
+      "name": "footprints.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "19475100"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "740ec8c060cb6d361ee06b7f3e9617501333b954d0f5277c00578f42c364beca"
+        }
+      ],
+      "name": "ground_stations.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "295490"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f9fc4089c50573cc515f88895def06f2223b15466f3c304906652d77408992b7"
+        }
+      ],
+      "name": "ground_stations.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "53618"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "204d6a74a9b78ad4659bb531fc27a11aaf5d42af9d0aa5f06c477094e58bfd33"
+        }
+      ],
+      "name": "ground_tracks.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "49246698"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1d4f9e7289966e4aee419ffaf924855d4f2ce2c4039f4f09271534acb3e13a87"
+        }
+      ],
+      "name": "ground_tracks.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "16886646"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1464a616a2847fd98816780217762d2963e06563c1ffdc81f6c58f626857484"
+        }
+      ],
+      "name": "latam-history-metadata.json",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "JSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "3831"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "857a17ac966ecb83f5a61f9a67fb5c72792051ab68b50eefd428936835db6850"
+        }
+      ],
+      "name": "latam_imaging_current.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "117370"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44624820cc8cbd0ae0d9e96a0130ae5e45d6ec5804e1e37b64139a49ba7dc5c2"
+        }
+      ],
+      "name": "latam_imaging_current.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "63203"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "362fb17cc3977e7f76b6eb0fb1f55b3d71a558b01afc3c3c7b20b2475b0b300a"
+        }
+      ],
+      "name": "latam_imaging_history.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "31153"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c5ef12f9bdf6c0613d4ff3f6a64438b06f5225d35294e5aa37cc5c7239e0ae1c"
+        }
+      ],
+      "name": "satellite_access_summary.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "473206"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e01b8033bba1ba02589cdb115cc3cc99c7ab790f3e3b3d3a01e10b68c2732318"
+        }
+      ],
+      "name": "satellites.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "20652228"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3beba65366107daa5c11780bee7a690ab0a5d8e093f8aa582728981b0664313e"
+        }
+      ],
+      "name": "satellites.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "3317650"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4feedc48cbaf8b4cf75975727f319de20b497605490876c66c26fc7fcb2c49cd"
+        }
+      ],
+      "name": "satgis_orbital_catalog.gpkg",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "OGC GeoPackage"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "53116928"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2432b7196f34ab318058800e5e05c24173259f77547a072676550a4af85aa656"
+        }
+      ],
+      "name": "station_access_summary.geojson",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoJSON"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "486361"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    },
+    {
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c8ac0ea4c0035ebef8dfc24dbd0f1d2f2c667b4a031293c74a473ceeda7bf145"
+        }
+      ],
+      "name": "station_access_summary.parquet",
+      "properties": [
+        {
+          "name": "satgis:format",
+          "value": "GeoParquet"
+        },
+        {
+          "name": "satgis:bytes",
+          "value": "74922"
+        },
+        {
+          "name": "satgis:features",
+          "value": ""
+        }
+      ],
+      "type": "file",
+      "version": "2026-07-26T05:00:00+00:00"
+    }
+  ],
+  "metadata": {
+    "component": {
+      "description": "Orbital catalog to GIS compilation: SGP4-propagated positions, ground tracks and visibility footprints for every tracked active satellite, with NASA / NOAA / USGS fleet attribution.",
+      "name": "satgis",
+      "type": "application",
+      "version": "0.1.0"
+    },
+    "properties": [
+      {
+        "name": "satgis:python",
+        "value": "3.12.13"
+      },
+      {
+        "name": "satgis:platform",
+        "value": "macOS-26.5.2-arm64-arm-64bit"
+      },
+      {
+        "name": "satgis:machine",
+        "value": "arm64"
+      },
+      {
+        "name": "satgis:propagation_epoch_utc",
+        "value": "2026-07-26T05:00:00+00:00"
+      },
+      {
+        "name": "satgis:frame_chain",
+        "value": "SGP4 TEME -> Rz(GMST82) -> ECEF (PEF) -> PROJ EPSG:4978->EPSG:4979 (WGS84)"
+      },
+      {
+        "name": "satgis:polar_motion_applied",
+        "value": "false"
+      }
+    ],
+    "timestamp": "2026-07-26T23:22:04+00:00",
+    "tools": {
+      "components": [
+        {
+          "name": "satgis",
+          "type": "application",
+          "version": "0.1.0"
+        }
+      ]
+    }
+  },
+  "specVersion": "1.6",
+  "version": 1
+}

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# satgis: large derived GIS artifacts are published as GitHub Release assets,
+# not committed. They are fully reproducible from the frozen snapshot in
+# satgis-tool/data/raw plus `./satgis build --epoch <frozen epoch>`, and every
+# one of them is hash-pinned in SHA256SUMS.json and xbom.cdx.json, which ARE
+# committed. Keeping them out of git history keeps the clone cheap without
+# weakening the evidence chain.
+satgis-tool/data/out/*.gpkg
+satgis-tool/data/out/*.parquet
+satgis-tool/data/out/satellites.geojson
+satgis-tool/data/out/footprints.geojson
+satgis-tool/data/out/ground_tracks.geojson
+satgis-tool/data/out/access_windows.parquet
+satgis-tool/data/out/access_epoch.parquet
+satgis-tool/data/out/latam_imaging_current.parquet
+satgis-tool/dist/
+
+# OS
+.DS_Store

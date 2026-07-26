@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# satgis launcher — resolves the project-local interpreter, never a global one.
+here=$(cd "$(dirname "$0")" && pwd)
+exec "$here/.venv/bin/python" -c "import sys; sys.path.insert(0,'$here/src'); from satgis.cli import main; raise SystemExit(main())" "$@"

@@ -1,0 +1,213 @@
+{
+  "container_policy": {
+    "geopackage_layers": [
+      "ground_stations",
+      "station_access_summary"
+    ],
+    "parquet_only": [
+      "access_windows"
+    ],
+    "reason": "the pair table is an analytical join target, not a map layer; keeping it out of SQLite keeps the .gpkg small and fast for the layers that are actually rendered"
+  },
+  "generated_utc": "2026-07-26T05:26:48+00:00",
+  "params": {
+    "epoch_utc": "2026-07-26T05:00:00+00:00",
+    "hours": 24.0,
+    "masks": [
+      0.0,
+      5.0,
+      10.0
+    ],
+    "n_satellites": 16241,
+    "n_stations": 484,
+    "n_time_samples": 1440,
+    "satrec_rejected": 0,
+    "step_s": 60.0
+  },
+  "precision": {
+    "max_abs_deg": 0.07578068371790891,
+    "mean_abs_deg": 6.259181732966474e-06,
+    "p99_abs_deg": 3.97078862613577e-05,
+    "pairs": 7860644,
+    "samples": 16241
+  },
+  "regional_rollup": {
+    "by_country": [
+      {
+        "country": "Spain",
+        "region_class": "Spain",
+        "sats_with_contact": 15882,
+        "stations": 184,
+        "total_minutes": 208644336.0,
+        "total_passes": 15880815
+      },
+      {
+        "country": "Argentina",
+        "region_class": "Latin America",
+        "sats_with_contact": 15858,
+        "stations": 79,
+        "total_minutes": 83004952.0,
+        "total_passes": 6519025
+      },
+      {
+        "country": "Brazil",
+        "region_class": "Latin America",
+        "sats_with_contact": 15883,
+        "stations": 63,
+        "total_minutes": 59516928.0,
+        "total_passes": 4215622
+      },
+      {
+        "country": "Mexico",
+        "region_class": "Latin America",
+        "sats_with_contact": 15831,
+        "stations": 44,
+        "total_minutes": 38111204.0,
+        "total_passes": 2896588
+      },
+      {
+        "country": "Colombia",
+        "region_class": "Latin America",
+        "sats_with_contact": 15850,
+        "stations": 31,
+        "total_minutes": 26039608.0,
+        "total_passes": 1764916
+      },
+      {
+        "country": "Chile",
+        "region_class": "Latin America",
+        "sats_with_contact": 15839,
+        "stations": 16,
+        "total_minutes": 16824840.0,
+        "total_passes": 1343723
+      },
+      {
+        "country": "Peru",
+        "region_class": "Latin America",
+        "sats_with_contact": 15850,
+        "stations": 13,
+        "total_minutes": 11019243.0,
+        "total_passes": 776009
+      },
+      {
+        "country": "Ecuador",
+        "region_class": "Latin America",
+        "sats_with_contact": 15835,
+        "stations": 12,
+        "total_minutes": 9873130.0,
+        "total_passes": 678912
+      },
+      {
+        "country": "Costa Rica",
+        "region_class": "Latin America",
+        "sats_with_contact": 15830,
+        "stations": 10,
+        "total_minutes": 8268176.0,
+        "total_passes": 581014
+      },
+      {
+        "country": "Dominican Republic",
+        "region_class": "Latin America",
+        "sats_with_contact": 15852,
+        "stations": 7,
+        "total_minutes": 6210045.0,
+        "total_passes": 438257
+      },
+      {
+        "country": "Uruguay",
+        "region_class": "Latin America",
+        "sats_with_contact": 15850,
+        "stations": 5,
+        "total_minutes": 5310438.0,
+        "total_passes": 418192
+      },
+      {
+        "country": "Paraguay",
+        "region_class": "Latin America",
+        "sats_with_contact": 15863,
+        "stations": 4,
+        "total_minutes": 3794663.0,
+        "total_passes": 283973
+      },
+      {
+        "country": "Guatemala",
+        "region_class": "Latin America",
+        "sats_with_contact": 15829,
+        "stations": 4,
+        "total_minutes": 3331101.0,
+        "total_passes": 240796
+      },
+      {
+        "country": "Venezuela",
+        "region_class": "Latin America",
+        "sats_with_contact": 15863,
+        "stations": 4,
+        "total_minutes": 3461251.0,
+        "total_passes": 232565
+      },
+      {
+        "country": "Bolivia",
+        "region_class": "Latin America",
+        "sats_with_contact": 15861,
+        "stations": 3,
+        "total_minutes": 2657221.0,
+        "total_passes": 186576
+      },
+      {
+        "country": "French Guiana (FRA)",
+        "region_class": "Latin America",
+        "sats_with_contact": 15873,
+        "stations": 3,
+        "total_minutes": 2625949.0,
+        "total_passes": 170731
+      },
+      {
+        "country": "Cuba",
+        "region_class": "Latin America",
+        "sats_with_contact": 15831,
+        "stations": 1,
+        "total_minutes": 891878.0,
+        "total_passes": 67514
+      },
+      {
+        "country": "Honduras",
+        "region_class": "Latin America",
+        "sats_with_contact": 15832,
+        "stations": 1,
+        "total_minutes": 836384.0,
+        "total_passes": 59902
+      }
+    ],
+    "by_orbit_class": [
+      {
+        "orbit_class": "GEO",
+        "passes": 95766,
+        "satellites": 345
+      },
+      {
+        "orbit_class": "HEO",
+        "passes": 37703,
+        "satellites": 52
+      },
+      {
+        "orbit_class": "LEO",
+        "passes": 36402683,
+        "satellites": 15430
+      },
+      {
+        "orbit_class": "MEO",
+        "passes": 218978,
+        "satellites": 210
+      }
+    ],
+    "countries": 18,
+    "elevation_mask_deg": 5.0,
+    "satellites_never_visible": 204,
+    "satellites_total": 16241,
+    "satellites_with_any_contact": 16037,
+    "stations": 484,
+    "total_access_hours_24h": 8173689.1,
+    "total_contact_events_24h": 36755130
+  },
+  "schema": "satgis.access-metadata/1"
+}
