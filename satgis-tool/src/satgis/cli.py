@@ -1,0 +1,166 @@
+"""satgis — stable-verb CLI.
+
+    satgis doctor    environment and dependency preflight
+    satgis acquire   fetch + hash the authoritative catalog snapshot
+    satgis build     snapshot -> GeoPackage / GeoJSON / GeoParquet + xBOM
+    satgis verify    three independent methods + negative controls
+    satgis package   bundle outputs + evidence for release
+
+Verbs are detected from data, never from an IDE- or host-specific path. Every
+verb is idempotent and every verb exits non-zero on a substantive failure, so
+CI and a human get the same answer.
+"""
+from __future__ import annotations
+
+import argparse
+import importlib.metadata as md
+import json
+import shutil
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+VERSION = "0.1.0"
+REQUIRED = ("sgp4", "geopandas", "shapely", "pyproj", "pyogrio", "pyarrow",
+            "pandas", "numpy", "requests", "cyclonedx-python-lib")
+
+
+def _epoch(value: str | None) -> datetime:
+    if value in (None, "", "now"):
+        return datetime.now(timezone.utc).replace(microsecond=0)
+    return datetime.fromisoformat(value).replace(tzinfo=timezone.utc)
+
+
+def cmd_doctor(args) -> int:
+    print(f"satgis {VERSION}")
+    print(f"python   {sys.version.split()[0]}  ({sys.executable})")
+    bad = []
+    for pkg in REQUIRED:
+        try:
+            print(f"  ok   {pkg}=={md.version(pkg)}")
+        except md.PackageNotFoundError:
+            print(f"  MISS {pkg}")
+            bad.append(pkg)
+    try:
+        import pyogrio
+        print(f"  ok   GDAL {pyogrio.__gdal_version_string__}")
+        drivers = set(pyogrio.list_drivers(write=True))
+        for d in ("GPKG", "GeoJSON"):
+            mark = "ok  " if d in drivers else "MISS"
+            print(f"  {mark} driver {d}")
+            if d not in drivers:
+                bad.append(f"driver:{d}")
+    except Exception as exc:  # noqa: BLE001
+        print(f"  MISS pyogrio/GDAL: {exc}")
+        bad.append("gdal")
+    raw = Path(args.raw)
+    snap = raw / "acquisition-manifest.json"
+    print(f"  {'ok  ' if snap.exists() else 'none'} snapshot {snap}")
+    print("\nDOCTOR: " + ("PASS" if not bad else f"FAIL ({', '.join(bad)})"))
+    return 0 if not bad else 1
+
+
+def cmd_acquire(args) -> int:
+    from .acquire import acquire_all
+    m = acquire_all(Path(args.raw))
+    print(f"\nsources={len(m['sources'])} failures={len(m['failures'])}")
+    return 0 if not m["failures"] else 2
+
+
+def cmd_build(args) -> int:
+    from .build import build
+    from .emit import emit
+    from .xbom import build_xbom, write_xbom
+
+    epoch = _epoch(args.epoch)
+    raw, out = Path(args.raw), Path(args.out)
+    print(f"epoch      {epoch.isoformat()}")
+    print(f"snapshot   {raw}")
+    built = build(raw, epoch, elev_mask_deg=args.elevation_mask,
+                  track_points=args.track_points, ring_points=args.ring_points)
+    c = built["metadata"]["counts"]
+    print(f"satellites {c['satellites_layer']}  footprints {c['footprints_layer']}  "
+          f"tracks {c['ground_tracks_layer']}")
+    a = built["metadata"]["agency"]
+    print(f"agency     {a['by_agency_lead']}  (rules {a['rules_matched']}/{a['rules_total']})")
+    if a["rules_unmatched"]:
+        print(f"  WARNING unmatched attribution rules: {a['rules_unmatched']}")
+    manifest = emit(built, out)
+    print(f"artifacts  {manifest['artifact_count']} files, "
+          f"{manifest['total_bytes']/1e6:.1f} MB")
+    xb = build_xbom(built["metadata"]["acquisition_manifest"], manifest,
+                    built["metadata"])
+    write_xbom(xb, out / "xbom.cdx.json")
+    print(f"xbom       {len(xb['components'])} components -> xbom.cdx.json")
+    return 0
+
+
+def cmd_verify(args) -> int:
+    from .verify import verify_all
+    out = Path(args.out)
+    report = verify_all(out)
+    for c in report["checks"] + report["negative_controls"]:
+        print(f"  [{'PASS' if c['passed'] else 'FAIL'}] {c['method']:11s} "
+              f"{c['check']:42s} {c['detail']}")
+    dest = Path(args.evidence) / "verification-report.json"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+    print(f"\nchecks {report['checks_passed']}/{report['checks_total']}  "
+          f"controls {report['controls_passed']}/{report['controls_total']}  "
+          f"VERDICT: {report['verdict']}")
+    print(f"report -> {dest}")
+    return 0 if report["verdict"] == "PASS" else 1
+
+
+def cmd_package(args) -> int:
+    out, ev = Path(args.out), Path(args.evidence)
+    dest = Path(args.dist); dest.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    base = dest / f"satgis-orbital-catalog-{stamp}"
+    staging = dest / "_staging"
+    if staging.exists():
+        shutil.rmtree(staging)
+    shutil.copytree(out, staging / "out")
+    if ev.exists():
+        shutil.copytree(ev, staging / "evidence")
+    archive = shutil.make_archive(str(base), "zip", staging)
+    shutil.rmtree(staging)
+    print(f"packaged -> {archive} ({Path(archive).stat().st_size/1e6:.1f} MB)")
+    return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    p = argparse.ArgumentParser(prog="satgis", description=__doc__,
+                                formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--version", action="version", version=f"satgis {VERSION}")
+    sub = p.add_subparsers(dest="verb", required=True)
+
+    def common(sp):
+        sp.add_argument("--raw", default="data/raw")
+        sp.add_argument("--out", default="data/out")
+        sp.add_argument("--evidence", default="evidence")
+        return sp
+
+    common(sub.add_parser("doctor")).set_defaults(func=cmd_doctor)
+    common(sub.add_parser("acquire")).set_defaults(func=cmd_acquire)
+
+    b = common(sub.add_parser("build"))
+    b.add_argument("--epoch", default="now",
+                   help="ISO-8601 UTC propagation epoch, or 'now'")
+    b.add_argument("--elevation-mask", type=float, default=0.0,
+                   help="footprint elevation mask in degrees (0 = horizon)")
+    b.add_argument("--track-points", type=int, default=60)
+    b.add_argument("--ring-points", type=int, default=72)
+    b.set_defaults(func=cmd_build)
+
+    common(sub.add_parser("verify")).set_defaults(func=cmd_verify)
+    pk = common(sub.add_parser("package"))
+    pk.add_argument("--dist", default="dist")
+    pk.set_defaults(func=cmd_package)
+
+    args = p.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,734 @@
+{
+  "by_agency_lead": {
+    "NASA": 42,
+    "NOAA": 13,
+    "USGS": 2,
+    "USSF": 2
+  },
+  "crosswalk": [
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 19548,
+      "object_id": "1988-091B",
+      "object_name": "TDRS 3",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://science.nasa.gov/mission/hubble/",
+      "mission_class": "astrophysics",
+      "norad_cat_id": 20580,
+      "object_id": "1990-037B",
+      "object_name": "HST",
+      "program": "Hubble"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 21639,
+      "object_id": "1991-054B",
+      "object_name": "TDRS 5",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 22314,
+      "object_id": "1993-003B",
+      "object_name": "TDRS 6",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 23613,
+      "object_id": "1995-035B",
+      "object_name": "TDRS 7",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/international-space-station/",
+      "mission_class": "crewed platform",
+      "norad_cat_id": 25544,
+      "object_id": "1998-067A",
+      "object_name": "ISS (ZARYA)",
+      "program": "ISS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/international-space-station/",
+      "mission_class": "crewed platform",
+      "norad_cat_id": 25575,
+      "object_id": "1998-069F",
+      "object_name": "ISS (UNITY)",
+      "program": "ISS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://terra.nasa.gov/",
+      "mission_class": "earth observation",
+      "norad_cat_id": 25994,
+      "object_id": "1999-068A",
+      "object_name": "TERRA",
+      "program": "EOS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 26388,
+      "object_id": "2000-034A",
+      "object_name": "TDRS 8",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/international-space-station/",
+      "mission_class": "crewed platform",
+      "norad_cat_id": 26400,
+      "object_id": "2000-037A",
+      "object_name": "ISS (ZVEZDA)",
+      "program": "ISS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/international-space-station/",
+      "mission_class": "crewed platform",
+      "norad_cat_id": 26700,
+      "object_id": "2001-006B",
+      "object_name": "ISS (DESTINY)",
+      "program": "ISS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "upper atmosphere",
+      "norad_cat_id": 26998,
+      "object_id": "2001-055B",
+      "object_name": "TIMED",
+      "program": "TIMED"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://aqua.nasa.gov/",
+      "mission_class": "earth observation",
+      "norad_cat_id": 27424,
+      "object_id": "2002-022A",
+      "object_name": "AQUA",
+      "program": "EOS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "solar irradiance",
+      "norad_cat_id": 27651,
+      "object_id": "2003-004A",
+      "object_name": "SORCE",
+      "program": "SORCE"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "USSF"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 28054,
+      "object_id": "2003-048A",
+      "object_name": "DMSP 5D-3 F16 (USA 172)",
+      "program": "DMSP"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://aura.gsfc.nasa.gov/",
+      "mission_class": "atmospheric chemistry",
+      "norad_cat_id": 28376,
+      "object_id": "2004-026A",
+      "object_name": "AURA",
+      "program": "EOS"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "USSF"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 29522,
+      "object_id": "2006-050A",
+      "object_name": "DMSP 5D-3 F17 (USA 191)",
+      "program": "DMSP"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 30580,
+      "object_id": "2007-004A",
+      "object_name": "THEMIS A",
+      "program": "THEMIS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 30797,
+      "object_id": "2007-004D",
+      "object_name": "THEMIS D",
+      "program": "THEMIS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 30798,
+      "object_id": "2007-004E",
+      "object_name": "THEMIS E",
+      "program": "THEMIS"
+    },
+    {
+      "agencies": [
+        "USSF"
+      ],
+      "agency_lead": "USSF",
+      "evidence_url": "CelesTrak GROUP=goes object naming; ex-GOES 14/15 transferred to USSF",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 35491,
+      "object_id": "2009-033A",
+      "object_name": "EWS-G3 (GOES 14)",
+      "program": "EWS-G (ex-GOES)"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "USSF"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 35951,
+      "object_id": "2009-057A",
+      "object_name": "DMSP 5D-3 F18 (USA 210)",
+      "program": "DMSP"
+    },
+    {
+      "agencies": [
+        "USSF"
+      ],
+      "agency_lead": "USSF",
+      "evidence_url": "CelesTrak GROUP=goes object naming; ex-GOES 14/15 transferred to USSF",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 36411,
+      "object_id": "2010-008A",
+      "object_name": "EWS-G2 (GOES 15)",
+      "program": "EWS-G (ex-GOES)"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying/joint-polar-satellite-system",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 37849,
+      "object_id": "2011-061A",
+      "object_name": "SUOMI NPP",
+      "program": "JPSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 39070,
+      "object_id": "2013-004A",
+      "object_name": "TDRS 11",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "USGS",
+        "NASA"
+      ],
+      "agency_lead": "USGS",
+      "evidence_url": "https://www.usgs.gov/landsat-missions/landsat-satellite-missions",
+      "mission_class": "land imaging",
+      "norad_cat_id": 39084,
+      "object_id": "2013-008A",
+      "object_name": "LANDSAT 8",
+      "program": "Landsat"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 39504,
+      "object_id": "2014-004A",
+      "object_name": "TDRS 12",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://gpm.nasa.gov/",
+      "mission_class": "precipitation radar",
+      "norad_cat_id": 39574,
+      "object_id": "2014-009C",
+      "object_name": "GPM-CORE",
+      "program": "GPM"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://ocov2.jpl.nasa.gov/",
+      "mission_class": "carbon spectrometry",
+      "norad_cat_id": 40059,
+      "object_id": "2014-035A",
+      "object_name": "OCO 2",
+      "program": "OCO"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://smap.jpl.nasa.gov/",
+      "mission_class": "soil moisture radar",
+      "norad_cat_id": 40376,
+      "object_id": "2015-003A",
+      "object_name": "SMAP",
+      "program": "SMAP"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/mission/mms/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 40482,
+      "object_id": "2015-011A",
+      "object_name": "MMS 1",
+      "program": "MMS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/mission/mms/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 40483,
+      "object_id": "2015-011B",
+      "object_name": "MMS 2",
+      "program": "MMS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/mission/mms/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 40484,
+      "object_id": "2015-011C",
+      "object_name": "MMS 3",
+      "program": "MMS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/mission/mms/",
+      "mission_class": "magnetospheric",
+      "norad_cat_id": 40485,
+      "object_id": "2015-011D",
+      "object_name": "MMS 4",
+      "program": "MMS"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "ocean altimetry",
+      "norad_cat_id": 41240,
+      "object_id": "2016-002A",
+      "object_name": "JASON-3",
+      "program": "Jason"
+    },
+    {
+      "agencies": [
+        "NOAA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 41866,
+      "object_id": "2016-071A",
+      "object_name": "GOES 16",
+      "program": "GOES-R"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41884,
+      "object_id": "2016-078A",
+      "object_name": "CYGFM05",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41885,
+      "object_id": "2016-078B",
+      "object_name": "CYGFM04",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41886,
+      "object_id": "2016-078C",
+      "object_name": "CYGFM02",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41887,
+      "object_id": "2016-078D",
+      "object_name": "CYGFM01",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41888,
+      "object_id": "2016-078E",
+      "object_name": "CYGFM08",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41890,
+      "object_id": "2016-078G",
+      "object_name": "CYGFM07",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/cygnss/",
+      "mission_class": "GNSS-R wind",
+      "norad_cat_id": 41891,
+      "object_id": "2016-078H",
+      "object_name": "CYGFM03",
+      "program": "CYGNSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/",
+      "mission_class": "relay communications",
+      "norad_cat_id": 42915,
+      "object_id": "2017-047A",
+      "object_name": "TDRS 13",
+      "program": "TDRSS"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying/joint-polar-satellite-system",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 43013,
+      "object_id": "2017-073A",
+      "object_name": "NOAA 20 (JPSS-1)",
+      "program": "JPSS"
+    },
+    {
+      "agencies": [
+        "NOAA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 43226,
+      "object_id": "2018-022A",
+      "object_name": "GOES 17",
+      "program": "GOES-R"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://gracefo.jpl.nasa.gov/",
+      "mission_class": "gravimetry",
+      "norad_cat_id": 43476,
+      "object_id": "2018-047A",
+      "object_name": "GRACE-FO 1",
+      "program": "GRACE-FO"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://gracefo.jpl.nasa.gov/",
+      "mission_class": "gravimetry",
+      "norad_cat_id": 43477,
+      "object_id": "2018-047B",
+      "object_name": "GRACE-FO 2",
+      "program": "GRACE-FO"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://icesat-2.gsfc.nasa.gov/",
+      "mission_class": "laser altimetry",
+      "norad_cat_id": 43613,
+      "object_id": "2018-070A",
+      "object_name": "ICESAT-2",
+      "program": "ICESat-2"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "ocean altimetry",
+      "norad_cat_id": 46984,
+      "object_id": "2020-086A",
+      "object_name": "SENTINEL-6A",
+      "program": "Sentinel-6"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://www.nasa.gov/international-space-station/",
+      "mission_class": "crewed platform",
+      "norad_cat_id": 49044,
+      "object_id": "2021-066A",
+      "object_name": "ISS (NAUKA)",
+      "program": "ISS"
+    },
+    {
+      "agencies": [
+        "USGS",
+        "NASA"
+      ],
+      "agency_lead": "USGS",
+      "evidence_url": "https://www.usgs.gov/landsat-missions/landsat-satellite-missions",
+      "mission_class": "land imaging",
+      "norad_cat_id": 49260,
+      "object_id": "2021-088A",
+      "object_name": "LANDSAT 9",
+      "program": "Landsat"
+    },
+    {
+      "agencies": [
+        "NOAA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 51850,
+      "object_id": "2022-021A",
+      "object_name": "GOES 18",
+      "program": "GOES-R"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying/joint-polar-satellite-system",
+      "mission_class": "polar meteorology",
+      "norad_cat_id": 54234,
+      "object_id": "2022-150A",
+      "object_name": "NOAA 21 (JPSS-2)",
+      "program": "JPSS"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://swot.jpl.nasa.gov/",
+      "mission_class": "surface water altimetry",
+      "norad_cat_id": 54754,
+      "object_id": "2022-173A",
+      "object_name": "SWOT",
+      "program": "SWOT"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://pace.gsfc.nasa.gov/",
+      "mission_class": "ocean colour / aerosol",
+      "norad_cat_id": 58928,
+      "object_id": "2024-025A",
+      "object_name": "PACE",
+      "program": "PACE"
+    },
+    {
+      "agencies": [
+        "NOAA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "geostationary meteorology",
+      "norad_cat_id": 60133,
+      "object_id": "2024-119A",
+      "object_name": "GOES 19",
+      "program": "GOES-R"
+    },
+    {
+      "agencies": [
+        "NASA"
+      ],
+      "agency_lead": "NASA",
+      "evidence_url": "https://nisar.jpl.nasa.gov/",
+      "mission_class": "L/S-band SAR",
+      "norad_cat_id": 65053,
+      "object_id": "2025-163A",
+      "object_name": "NISAR",
+      "program": "NISAR"
+    },
+    {
+      "agencies": [
+        "NOAA",
+        "NASA"
+      ],
+      "agency_lead": "NOAA",
+      "evidence_url": "https://www.nesdis.noaa.gov/our-satellites/currently-flying",
+      "mission_class": "ocean altimetry",
+      "norad_cat_id": 66514,
+      "object_id": "2025-264A",
+      "object_name": "SENTINEL-6B",
+      "program": "Sentinel-6"
+    }
+  ],
+  "objects_attributed": 59,
+  "rules_matched": 28,
+  "rules_total": 28,
+  "rules_unmatched": [],
+  "schema": "satgis.agency-crosswalk/1"
+}

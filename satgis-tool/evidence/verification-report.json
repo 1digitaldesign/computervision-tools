@@ -1,0 +1,115 @@
+{
+  "checks": [
+    {
+      "artifacts": 18,
+      "check": "artifact_sha256",
+      "detail": "18 artifacts verified",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "gpkg_schema_and_counts",
+      "detail": "3 layers: counts, CRS, validity all conform",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "required_columns",
+      "detail": "all required columns present",
+      "method": "M1",
+      "passed": true
+    },
+    {
+      "check": "proj_vs_bowring_datum",
+      "detail": "max dlat=2.132e-14 deg, dlon=2.842e-14 deg, dalt=2.980e-08 m",
+      "max_dalt_m": 2.9802322387695312e-08,
+      "max_dlat_deg": 2.1316282072803006e-14,
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "alt_km": 426.88230154327397,
+      "check": "reference_iss_25544",
+      "detail": "alt=426.9 km (expect 330-470), speed=7.657 km/s (expect 7.5-7.9)",
+      "method": "M2",
+      "passed": true,
+      "speed_km_s": 7.65747199704839
+    },
+    {
+      "check": "reference_goes_geostationary",
+      "detail": "n=4 alt=35786-35789 km, |lat|max=0.446 deg, v=3.075-3.075 km/s",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "agreement_fraction": 1.0,
+      "check": "kepler_third_law",
+      "detail": "100.00% of 16241 objects agree with T=2*pi*sqrt(a^3/mu) within 2%",
+      "method": "M2",
+      "passed": true
+    },
+    {
+      "check": "subsatellite_point_in_footprint",
+      "detail": "16241/16241 (100.000%) footprints contain their own subsatellite point",
+      "fraction": 1.0,
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "world_bounds",
+      "detail": "footprint bounds [np.float64(-180.0), np.float64(-90.0), np.float64(180.0), np.float64(90.0)] within EPSG:4326 domain",
+      "method": "M3",
+      "passed": true
+    },
+    {
+      "check": "cap_radius_monotone_in_altitude",
+      "detail": "Spearman rho(alt_km, radius_km) = 1.000000000 (expect ~1.0)",
+      "method": "M3",
+      "passed": true,
+      "spearman_rho": 1.0
+    },
+    {
+      "check": "ground_tracks_non_empty",
+      "detail": "16241 tracks, 0 empty",
+      "method": "M3",
+      "passed": true
+    }
+  ],
+  "checks_passed": 11,
+  "checks_total": 11,
+  "controls_passed": 4,
+  "controls_total": 4,
+  "methods": {
+    "M1": "integrity/CRC/schema",
+    "M2": "independent physics",
+    "M3": "geometric invariants"
+  },
+  "negative_controls": [
+    {
+      "check": "NC1_bitflip_detected",
+      "detail": "single-byte flip in footprints.parquet detected; original restored",
+      "method": "M1-control",
+      "passed": true
+    },
+    {
+      "check": "NC2_antipodal_point_rejected",
+      "detail": "0 expected; 0/2000 antipodal points fell inside their own cap. Max central angle over the whole catalog is 87.340 deg (< 90 deg), so the antipode is provably exterior for every object.",
+      "method": "M3-control",
+      "passed": true
+    },
+    {
+      "check": "NC3_shuffled_altitude_breaks_monotonicity",
+      "detail": "Spearman rho collapses to 0.000348 under a seeded altitude permutation (expect ~0)",
+      "method": "M3-control",
+      "passed": true
+    },
+    {
+      "check": "NC4_datum_perturbation_detected",
+      "detail": "a 25 km Z-axis injection moves max dlat to 0.216397 deg, far above the 1e-8 deg pass threshold",
+      "method": "M2-control",
+      "passed": true
+    }
+  ],
+  "schema": "satgis.verification-report/1",
+  "verdict": "PASS"
+}
